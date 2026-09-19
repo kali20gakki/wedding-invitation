@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>纸鹤图案自查</title>
+<style>
+  *{box-sizing:border-box}
+  body{margin:0;width:390px;font-family:system-ui,sans-serif;
+    background:linear-gradient(180deg,#A8CFE0 0,#C6DEE6 34%,#E8DCC0 58%,#C9AF88 100%)}
+  h3{margin:0 0 10px;font-size:12px;letter-spacing:.2em;color:#3A3B33}
+  section{padding:16px 20px}
+  .big{display:block;width:190px;height:190px;margin:0 auto;
+    filter:drop-shadow(0 6px 10px rgba(58,59,51,.28))}
+  .row{display:flex;align-items:center;justify-content:space-around}
+  .row img{filter:drop-shadow(0 3px 5px rgba(58,59,51,.22))}
+  .sizes{display:flex;align-items:center;justify-content:space-between;
+    margin-top:14px;padding:14px 12px;border-radius:12px;background:rgba(255,251,242,.45)}
+  .sizes img{filter:drop-shadow(0 3px 5px rgba(58,59,51,.22))}
+  .chime{position:relative;width:60px;height:60px;border:1px solid rgba(58,59,51,.3);
+    border-radius:50%;background:rgba(255,251,242,.86)}
+  .chime::before{content:"";position:absolute;left:50%;top:9px;width:2px;height:12px;
+    background:rgba(58,59,51,.45);transform:translateX(-50%)}
+  .chime::after{content:"";position:absolute;left:50%;top:20px;width:19px;height:19px;
+    border:2px solid #D08A3E;border-radius:50% 50% 42% 42%;background:rgba(232,166,87,.35);
+    transform:translateX(-50%)}
+</style>
+</head>
+<body>
+  <section>
+    <h3>大图 · 折面结构</h3>
+    <img class="big" src="../assets/crane-cream.svg" alt="">
+  </section>
+  <section>
+    <h3>配色 · 与站点调色一致</h3>
+    <div class="row">
+      <img src="../assets/crane-sunset.svg" width="38" height="38" alt="">
+      <img src="../assets/crane-brick.svg" width="38" height="38" alt="">
+      <img src="../assets/crane-grass.svg" width="38" height="38" alt="">
+      <img src="../assets/crane-sky.svg" width="38" height="38" alt="">
+      <img src="../assets/crane-cream.svg" width="38" height="38" alt="">
+    </div>
+  </section>
+  <section style="background:rgba(168,207,224,.35)">
+    <h3>压在浅色天空底上</h3>
+    <div class="row">
+      <img src="../assets/crane-sunset.svg" width="38" height="38" alt="">
+      <img src="../assets/crane-brick.svg" width="38" height="38" alt="">
+      <img src="../assets/crane-grass.svg" width="38" height="38" alt="">
+      <img src="../assets/crane-sky.svg" width="38" height="38" alt="">
+      <img src="../assets/crane-cream.svg" width="38" height="38" alt="">
+    </div>
+  </section>
+  <section>
+    <h3>实际尺寸 · 28 / 34 / 44px</h3>
+    <div class="sizes">
+      <img src="../assets/crane-sunset.svg" width="28" height="28" alt="">
+      <img src="../assets/crane-brick.svg" width="34" height="34" alt="">
+      <img src="../assets/crane-grass.svg" width="44" height="44" alt="">
+      <div class="chime"></div>
+    </div>
+  </section>
+</body>
+</html>

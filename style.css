@@ -1,12 +1,1087 @@
-:root{--deep:#03162c;--navy:#062a4b;--sea:#027ba9;--cyan:#39e6e1;--yellow:#ffd937;--paper:#fff3cf;--pixel-shadow:4px 4px 0 #031a35}*{box-sizing:border-box}html{scroll-behavior:smooth;background:var(--deep)}body{margin:0;background:radial-gradient(circle at 50% 0,#07547d,#020f22 70%);color:#fff;font-family:"Arial Narrow","Microsoft YaHei",sans-serif;-webkit-font-smoothing:none}button,input,select,textarea{font:inherit}button,a{-webkit-tap-highlight-color:transparent}img{display:block;max-width:100%}.phone-shell{width:min(100%,480px);margin:auto;overflow:hidden;background:#063d66;box-shadow:0 0 65px #000d}.hero{position:relative;min-height:100svh;overflow:hidden;background:#087eba}.hero-art{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}.hero-shade{position:absolute;inset:0;background:linear-gradient(#002c4d57 0 28%,#002d4d05 44%,#00152eea 100%)}.surface-glitter{position:absolute;inset:0;opacity:.6;background-image:radial-gradient(circle,#fff 0 1px,transparent 2px),radial-gradient(circle,#baffff 0 1px,transparent 2px);background-position:10% 11%,78% 19%;background-size:103px 97px,147px 121px;animation:glitter 2.4s steps(2) infinite}.hero-hud{position:absolute;z-index:2;top:max(13px,env(safe-area-inset-top));left:14px;right:14px;display:flex;justify-content:space-between;align-items:center;padding:8px 10px;border:2px solid #b6fbff80;color:#c9ffff;background:#023a6399;font:800 8px/1 monospace;letter-spacing:.08em}.hero-hud b{color:var(--yellow)}.hero-copy{position:absolute;z-index:2;top:49%;left:18px;right:18px;transform:translateY(-25%);text-align:center;text-shadow:0 3px #00365f}.official-logo{width:min(52vw,245px);margin:0 auto 9px;filter:drop-shadow(0 5px 0 #003052)}.mission-code{display:inline-block;margin:0;padding:5px 9px;border:2px solid #7ef8f1;color:#cffffc;background:#002f53db;font:900 9px/1 monospace;letter-spacing:.12em}.hero h1{margin:15px 0 7px;color:var(--yellow);font:900 clamp(36px,11.2vw,54px)/.9 Impact,"Arial Black",sans-serif;letter-spacing:.035em;-webkit-text-stroke:2px #8a5011;text-shadow:0 4px #ff992c,0 8px #052b52}.hero h1 span{color:#fff6b4;font-size:.62em;vertical-align:middle}.hero-cn{margin:0;color:#fff;font-size:15px;font-weight:900;letter-spacing:.16em}.mission-ticket{display:grid;grid-template-columns:42px 1fr;gap:4px 7px;width:min(92%,330px);margin:17px auto 0;padding:10px 12px;border:2px dashed #bbf8f4;background:#001d38bd;text-align:left}.mission-ticket span{color:#65e6e0;font:900 8px/1.5 monospace}.mission-ticket b{font-size:11px;line-height:1.3}.dive-button{position:absolute;z-index:4;bottom:max(55px,calc(env(safe-area-inset-bottom) + 48px));left:50%;display:flex;gap:12px;align-items:center;transform:translateX(-50%);width:max-content;padding:13px 17px;border:3px solid #775014;color:#123253;background:var(--yellow);box-shadow:5px 6px #00335c;font-size:13px;font-weight:900;cursor:pointer;animation:buttonPulse 1.5s steps(2) infinite}.start-note{position:absolute;z-index:3;bottom:max(25px,calc(env(safe-area-inset-bottom) + 17px));left:0;right:0;margin:0;color:#c7fbff;text-align:center;font-size:9px;letter-spacing:.06em}.game-hud{position:fixed;z-index:18;top:max(8px,env(safe-area-inset-top));left:50%;display:flex;align-items:center;justify-content:space-between;width:min(calc(100% - 16px),464px);padding:7px 10px;border:2px solid #8df2ef70;background:#001b36d9;backdrop-filter:blur(5px);transform:translateX(-50%) translateY(-140%);transition:transform .4s;pointer-events:none}.game-hud.is-visible{transform:translateX(-50%) translateY(0)}.depth,.caught{display:flex;align-items:baseline;color:#9af5f2;font:800 8px/1 monospace}.depth b{margin-left:5px;color:#fff;font-size:17px}.depth span,.caught small{margin-left:2px}.oxygen{display:flex;gap:6px;align-items:center;color:#f3f5dd;font:900 10px/1 monospace}.oxygen i{width:106px;height:10px;border:2px solid #fff;background:#3c4565}.oxygen b{display:block;width:100%;height:100%;background:linear-gradient(90deg,#8deb3a,#f9e931);transform-origin:left}.caught b{margin-left:5px;color:#fff;font-size:15px}.story-section{position:relative;padding:62px 22px 54px;overflow:hidden}.underwater{min-height:980px;background:linear-gradient(#0789b3 0,#04618f 38%,#062d55 72%,#03182f)}.water-rays{position:absolute;inset:0;background:linear-gradient(105deg,transparent 10%,#c6ffff32 27%,transparent 43%) 0 0/180px 100% repeat-x;animation:rays 9s linear infinite;pointer-events:none}.bubble-field i{position:absolute;bottom:-30px;width:8px;height:8px;border:2px solid #bffcff;border-radius:50%;opacity:.6;animation:rise var(--duration,7s) linear var(--delay,0s) infinite}.section-title{position:relative;z-index:2;display:flex;gap:12px;align-items:center;margin-bottom:22px}.section-title>span{display:grid;place-items:center;width:39px;height:39px;border:3px solid #ffe55d;color:#103b5d;background:#ffd638;box-shadow:4px 4px #01446a;font:900 17px/1 Impact,sans-serif}.section-title p{margin:0 0 3px;color:#85f3ee;font:900 8px/1 monospace;letter-spacing:.12em}.section-title h2{margin:0;color:#efffff;font-size:23px;letter-spacing:.08em;text-shadow:2px 2px #043053}.mission-card{position:relative;z-index:2;padding:16px;border:4px solid #16425c;color:#17334a;background:var(--paper);box-shadow:7px 8px #002f54}.mission-card::after{content:"";position:absolute;inset:5px;border:2px dashed #d4aa5a;pointer-events:none}.card-top{position:relative;z-index:1;display:flex;justify-content:space-between;padding:0 3px 10px;border-bottom:2px solid #d0ac6d;color:#a94e35;font:900 9px/1 monospace;letter-spacing:.08em}.card-top b{color:#a76816}.mission-card h3{position:relative;z-index:1;margin:15px 3px 8px;color:#075f91;font:900 25px/1 Impact,"Arial Black",sans-serif}.mission-card>p{position:relative;z-index:1;margin:0 3px 15px;font-size:12px;line-height:1.8;font-weight:700}.mission-card dl{position:relative;z-index:1;margin:0 3px;border-top:2px solid #d2b77f}.mission-card dl div{display:grid;grid-template-columns:52px 1fr;gap:6px;padding:9px 0;border-bottom:1px dashed #c59d61}.mission-card dt{color:#b15b36;font:900 9px/1.5 monospace}.mission-card dd{margin:0;font-size:11px;line-height:1.45;font-weight:900}.venue-one-line{white-space:nowrap;font-size:clamp(8.5px,2.45vw,11px)!important;letter-spacing:-.04em}.accept-button{position:relative;z-index:2;width:100%;margin-top:13px;padding:12px;border:3px solid #1c4661;color:#fff6c7;background:#087daa;box-shadow:3px 4px #12354c;font-size:12px;font-weight:900;cursor:pointer}.hold-progress{position:relative;z-index:2;height:4px;margin-top:8px;background:#d8bd83}.hold-progress i{display:block;width:0;height:100%;background:#23ad73}.mission-card.is-holding .hold-progress i{width:100%;transition:width 1s linear}.mission-card.is-accepted .accept-button{color:#144330;background:#87de4d}.mission-complete{position:fixed;z-index:40;top:42%;left:50%;display:flex;flex-direction:column;align-items:center;width:min(88%,350px);padding:18px 14px;border:4px solid #fff3a7;color:#fff;background:#092e51e8;box-shadow:0 0 0 5px #ffcc36,8px 9px #001229;opacity:0;transform:translate(-50%,-50%) scale(.7);pointer-events:none}.mission-complete.show{animation:missionPop 2.2s ease both}.mission-complete b{color:#ffe147;font:900 27px/1 Impact,sans-serif}.mission-complete span{margin-top:7px;font-size:11px}.exploration-frame{position:relative;z-index:2;margin-top:35px;border:4px solid #a8f2f1;outline:4px solid #072b4f;box-shadow:7px 8px #001c35;overflow:hidden}.exploration-frame>img{width:100%;aspect-ratio:16/9;object-fit:cover}.camera-corners::before,.camera-corners::after{content:"";position:absolute;width:25px;height:25px;border-color:#fff;border-style:solid;top:9px}.camera-corners::before{left:9px;border-width:3px 0 0 3px}.camera-corners::after{right:9px;border-width:3px 3px 0 0}.sonar-button{position:absolute;right:10px;bottom:10px;width:55px;height:55px;border:3px solid #c6ffff;color:#083451;background:#58e9dfcc;border-radius:50%;box-shadow:0 0 0 4px #04466f;font:900 8px/1 monospace;cursor:pointer}.sonar-field{position:absolute;inset:0;pointer-events:none}.sonar-field i{position:absolute;left:50%;top:50%;width:30px;height:30px;border:3px solid #bcffff;border-radius:50%;transform:translate(-50%,-50%);animation:sonar 1s ease-out both}.scene-caption{position:relative;z-index:2;margin:14px 0 0;color:#9cf8f4;text-align:center;font:800 9px/1.4 monospace}.fish-field{position:relative;z-index:2;height:180px;margin-top:16px;border-top:1px dashed #53cfd270}.pixel-fish{position:absolute;display:block;width:42px;height:22px;border:0;background:transparent;filter:drop-shadow(2px 2px #001b33);cursor:pointer;animation:swim var(--swim,8s) linear infinite}.pixel-fish::before{content:"";position:absolute;left:10px;top:5px;width:24px;height:12px;background:var(--fish,#ffbd45);clip-path:polygon(0 20%,70% 0,100% 50%,70% 100%,0 80%,20% 50%)}.pixel-fish::after{content:"";position:absolute;left:0;top:6px;width:12px;height:11px;background:var(--fish,#ffbd45);clip-path:polygon(100% 50%,0 0,0 100%)}.pixel-fish.caught{animation:caught .55s ease-in forwards;pointer-events:none}.fish-unlock{position:absolute;inset:auto 0 8px;text-align:center;color:#ffe55b;font-weight:900;font-size:12px}.crew-section{background:linear-gradient(#071b35,#10284a);padding-bottom:64px}.crew-phone{position:relative;z-index:2;padding:8px;border:4px solid #243b68;background:#0d1832;box-shadow:7px 8px #020b18,inset 0 0 0 2px #5672aa}.phone-top{display:flex;justify-content:space-between;padding:8px 8px 9px;color:#6ff5ee;background:#172d51;font:900 8px/1 monospace}.phone-top b{color:#ff50d0;animation:blink 1s steps(2) infinite}.crew-slides{position:relative;aspect-ratio:1.777;background:#02162a;overflow:hidden}.crew-slide{position:absolute;inset:0;opacity:0;transform:translateX(10%);transition:opacity .25s,transform .25s;pointer-events:none}.crew-slide.is-active{opacity:1;transform:none;pointer-events:auto}.crew-slide img{width:100%;height:100%;object-fit:cover}.crew-slide p{position:absolute;left:8px;right:8px;bottom:8px;margin:0;padding:8px;border:2px solid #eaf8ff;color:#eefcff;background:#041b34e8;font-size:9px;line-height:1.5}.crew-slide p b{display:block;margin-bottom:3px;color:#ff54cf;font:900 12px/1 monospace}.crew-controls{display:grid;grid-template-columns:44px 1fr 44px;gap:7px;margin-top:7px}.crew-controls button{border:2px solid #55739d;color:#9ffbf4;background:#182d50}.crew-controls output{padding:10px;color:#ffe154;background:#07152b;text-align:center;font:900 9px/1 monospace}.schedule-section{background:repeating-linear-gradient(90deg,#151d2c 0 13px,#1d2938 14px 27px)}.section-title.light p{color:#ffc5f1}.restaurant-screen{position:relative;z-index:2;border:5px solid #d8a257;box-shadow:7px 8px #040913;overflow:hidden}.restaurant-screen img{width:100%;aspect-ratio:16/9;object-fit:cover}.restaurant-status{position:absolute;left:8px;top:8px;display:flex;gap:6px;align-items:center;padding:5px 7px;color:#fff;background:#03162dcc;font:900 8px/1 monospace}.restaurant-status i{width:7px;height:7px;background:#8cf044;border-radius:50%;box-shadow:0 0 8px #8cf044}.menu-board{position:relative;z-index:2;margin-top:26px;padding:17px 15px 13px;border:5px solid #d8a250;color:#3c2b23;background:#f9e4b5;box-shadow:7px 8px #030812,inset 0 0 0 3px #fff5d0}.board-title{margin:0 0 8px;padding-bottom:9px;border-bottom:3px double #a85f40;color:#a14532;text-align:center;font:900 11px/1 monospace}.menu-board article{display:grid;grid-template-columns:54px 1fr auto;gap:9px;align-items:center;padding:13px 0;border-bottom:2px dashed #bb8a59}.menu-board time{color:#b54835;font:900 18px/1 Impact,sans-serif}.menu-board article b{display:block;font-size:13px}.menu-board article span{display:block;margin-top:4px;font-size:9px}.menu-board strong{color:#e08618;font-size:10px}.menu-total{display:flex;justify-content:space-between;align-items:center;padding-top:12px;color:#8d4a36;font:900 9px/1 monospace}.menu-total b{color:#e84e81;font-size:19px}.countdown-card{position:relative;z-index:2;display:flex;align-items:baseline;justify-content:center;gap:9px;margin:26px 12px 0;padding:13px;border:3px solid #436a81;color:#a9f8f4;background:#081a31;box-shadow:5px 5px #020814;font:900 9px/1 monospace}.countdown-card b{color:#ffe04b;font:900 32px/1 Impact,sans-serif}.arrival{background:linear-gradient(#efd071,#df9441);color:#5a352b}.arrival .section-title p{color:#a24a34}.arrival .section-title h2{color:#5a352b;text-shadow:2px 2px #f7e4a6}.arrival .section-title>span{box-shadow:4px 4px #a55632}.map-console{position:relative;z-index:2;min-height:330px;padding:168px 16px 16px;border:5px solid #51352f;background:#062d49;box-shadow:7px 8px #ab5734;overflow:hidden}.map-grid{position:absolute;inset:0 0 auto;height:155px;background-color:#07547d;background-image:linear-gradient(#2a97a955 1px,transparent 1px),linear-gradient(90deg,#2a97a955 1px,transparent 1px);background-size:27px 27px}.map-grid::before,.map-grid::after{content:"";position:absolute;border:8px solid #2d8b75;filter:drop-shadow(4px 4px #083d53)}.map-grid::before{left:-20px;top:35px;width:170px;height:90px;border-radius:45% 55% 30% 70%}.map-grid::after{right:-30px;top:9px;width:130px;height:100px;border-radius:60% 40% 60% 35%}.map-pulse{position:absolute;z-index:2;left:55%;top:68px;width:44px;height:44px}.map-pulse i{position:absolute;inset:0;border:3px solid #ffe456;border-radius:50%;animation:mapPulse 1.7s ease-out infinite}.map-pulse b{position:absolute;inset:0;display:grid;place-items:center;color:#ff5160;font-size:21px}.coordinate{margin:0;color:#72ddd9;font:900 8px/1 monospace}.map-console h3{margin:8px 0 10px;color:#fff0b7;font-size:15px;line-height:1.5}.map-console>p:not(.coordinate){margin:0 0 15px;color:#d1f8f5;font-size:10px}.map-console a{display:flex;justify-content:center;align-items:center;gap:8px;padding:12px;border:3px solid #ffe066;color:#13374d;background:#ffd840;box-shadow:4px 4px #00182c;text-decoration:none;font-size:12px;font-weight:900}.rsvp-section{background:linear-gradient(#07385c,#03182f)}.rsvp-phone{position:relative;z-index:2;padding:8px;border:5px solid #506b9a;background:#0d1931;box-shadow:7px 8px #011020,inset 0 0 0 2px #93a7cd}.app-bar{display:grid;grid-template-columns:22px 1fr auto;align-items:center;padding:10px 8px;color:#7af4ec;background:#172c4c;font:900 8px/1 monospace}.app-bar span{color:#ff4fc8;font-size:16px}.app-bar small{color:#8beb50}.rsvp-phone form{padding:16px 13px 14px;color:#e8ffff;background:linear-gradient(#0d3153,#082542)}.rsvp-phone form>label,.date-fields label{display:block;margin-bottom:14px}.rsvp-phone label>span,.rsvp-phone legend{display:block;margin-bottom:6px;color:#8feeea;font:900 9px/1.3 monospace}.rsvp-phone label>span b,.rsvp-phone legend b{color:#ff5e77}.rsvp-phone input,.rsvp-phone select,.rsvp-phone textarea{width:100%;padding:11px;border:2px solid #557ba1;border-radius:0;outline:none;color:#efffff;background:#061a31;box-shadow:inset 3px 3px #020e1c;font-size:12px}.rsvp-phone input:focus,.rsvp-phone select:focus,.rsvp-phone textarea:focus{border-color:#7ff7ef}.rsvp-phone [aria-invalid="true"]{border-color:#ff5d65!important}.rsvp-phone textarea{resize:vertical}.rsvp-phone label>small{display:block;margin-top:4px;color:#739ab7;text-align:right;font:800 8px/1 monospace}.rsvp-phone fieldset{margin:0 0 14px;padding:0;border:0}.choice-row{display:grid;grid-template-columns:1fr 1fr;gap:8px}.choice-row label{margin:0}.choice-row input{position:absolute;opacity:0}.choice-row span{display:block!important;margin:0!important;padding:10px;border:2px solid #557ba1;color:#cceff3!important;background:#071b33;text-align:center}.choice-row input:checked+span{border-color:#ffe04c;color:#18384d!important;background:#ffe04c}.date-fields{display:grid;grid-template-columns:1fr 1fr;gap:9px}.date-fields label{min-width:0}.date-fields input{padding:9px 5px;font-size:9px}.form-error{margin:0 0 12px;padding:9px;border:2px solid #ff6a6e;color:#ffd4d4;background:#4c1727;font-size:10px}.submit-button{display:flex;justify-content:space-between;width:100%;padding:13px 15px;border:3px solid #79601b;color:#173751;background:#ffe046;box-shadow:4px 5px #020f20;font-size:12px;font-weight:900}.submit-button:disabled{opacity:.6}.rsvp-success{padding:31px 17px;color:#eaffff;background:#082746;text-align:center}.success-radar{position:relative;width:90px;height:90px;margin:0 auto 18px;border:3px solid #74f2e8;border-radius:50%;background:repeating-radial-gradient(circle,transparent 0 14px,#32bdb944 15px 16px)}.success-radar i{position:absolute;inset:0;border-top:2px solid #a6fff7;border-radius:50%;animation:spin 2s linear infinite}.success-radar b{position:absolute;inset:0;display:grid;place-items:center;color:#ffe347;font-size:34px}.rsvp-success h3{margin:0;color:#ffe04c;font-size:20px}.rsvp-success p{font-size:11px;line-height:1.7}.rsvp-success button{padding:10px 15px;border:2px solid #75e9e4;color:#dffffc;background:#0a4867}.ending{min-height:630px;padding:0;background:#03182f}.ending>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}.ending::after{content:"";position:absolute;inset:0;background:linear-gradient(#00122c1f,#00142edb 75%,#001022)}.ending-copy{position:absolute;z-index:2;left:22px;right:22px;bottom:80px;text-align:center;text-shadow:0 3px #00182f}.ending-copy p{margin:0 0 10px;color:#74eee8;font:900 9px/1 monospace}.ending-copy h2{margin:0 0 18px;font-size:28px;line-height:1.35}.ending-copy b{display:block;color:#ffe043;font:900 29px/1 Impact,sans-serif}.ending-copy span{display:block;margin-top:8px;font-size:11px}footer{padding:25px 20px calc(82px + env(safe-area-inset-bottom));color:#91ddd9;background:#020e20;text-align:center}footer img{width:115px;margin:0 auto 10px;filter:grayscale(.3)}footer p{margin:0;font:800 7px/1.5 monospace}.quick-nav{position:fixed;z-index:20;left:50%;bottom:max(8px,env(safe-area-inset-bottom));display:grid;grid-template-columns:repeat(4,1fr);width:min(calc(100% - 88px),390px);border:2px solid #5fa5b7;background:#05172de8;box-shadow:4px 4px #0009;transform:translateX(-50%);backdrop-filter:blur(7px)}.quick-nav a{padding:9px 3px;color:#b8f6f2;text-align:center;text-decoration:none;font-size:9px;font-weight:900}.quick-nav a+a{border-left:1px solid #315d75}.music-dock{position:fixed;z-index:30;right:max(10px,calc((100vw - 480px)/2 + 10px));bottom:max(10px,env(safe-area-inset-bottom))}.music-dock>p{position:absolute;right:50px;bottom:4px;width:max-content;margin:0;padding:7px 9px;border:2px solid #ffe05a;color:#173650;background:#fff1bd;box-shadow:3px 3px #00162c;font-size:9px;font-weight:900;transition:.25s}.music-dock>p::after{content:"";position:absolute;right:-8px;top:10px;border-width:5px 0 5px 7px;border-style:solid;border-color:transparent transparent transparent #ffe05a}.music-dock>p.is-hidden{opacity:0;transform:translateY(8px);pointer-events:none}.music-dock>button{display:grid;place-items:center;width:42px;height:42px;border:3px solid #ffe44f;color:#173954;background:#ffda3d;border-radius:50%;box-shadow:3px 4px #001329;font-size:19px}.music-dock>button.playing{color:#fff;background:#e835a9;animation:musicPulse 1.3s ease-in-out infinite}.music-player{position:absolute;right:0;bottom:52px;width:min(300px,calc(100vw - 28px));padding:7px;border:3px solid #70eae3;background:#061a31;box-shadow:6px 7px #000b}.music-player>div:first-child{display:flex;flex-direction:column;padding:3px 34px 8px 3px;color:#fff;font-size:9px}.music-player>div:first-child b{color:#ffe046;font:900 10px/1 monospace}.music-player>div:first-child span{margin-top:3px;color:#a5e8e4}.music-player>button{position:absolute;right:7px;top:7px;width:27px;height:27px;border:2px solid #506d8b;color:#fff;background:#142d4b}.music-player iframe{display:block;width:100%;aspect-ratio:16/9;border:0}.reveal{opacity:0;transform:translateY(20px);transition:opacity .65s,transform .65s}.reveal.is-visible{opacity:1;transform:none}@keyframes rise{to{transform:translateY(-1050px) translateX(23px);opacity:0}}@keyframes swim{from{transform:translateX(-65px)}to{transform:translateX(430px)}}@keyframes sonar{to{width:400px;height:400px;opacity:0}}@keyframes caught{to{transform:translateY(-75px) scale(.2) rotate(25deg);opacity:0}}@keyframes mapPulse{to{transform:scale(2.4);opacity:0}}@keyframes missionPop{0%{opacity:0;transform:translate(-50%,-50%) scale(.7)}15%,72%{opacity:1;transform:translate(-50%,-50%) scale(1)}100%{opacity:0;transform:translate(-50%,-60%) scale(1)}}@keyframes glitter{50%{opacity:.25}}@keyframes rays{to{background-position:180px 0}}@keyframes buttonPulse{50%{transform:translateX(-50%) translateY(2px)}}@keyframes blink{50%{opacity:.35}}@keyframes spin{to{transform:rotate(360deg)}}@keyframes musicPulse{50%{box-shadow:0 0 0 7px #ed3bad44,3px 4px #001329}}@media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;animation-duration:.01ms!important;animation-iteration-count:1!important}.reveal{opacity:1;transform:none}}@media(max-width:360px){.story-section{padding-inline:16px}.mission-card dl div{grid-template-columns:45px 1fr}.venue-one-line{font-size:8px!important}.date-fields{grid-template-columns:1fr}.hero h1{font-size:35px}.oxygen i{width:76px}.crew-slide p{font-size:8px}.music-player{width:278px}}
+/* ============================================================================
+   风之旅 · 吉卜力画风婚礼邀请函
+   ----------------------------------------------------------------------------
+   命名映射（历史遗留名 → 当前场景语义）
+   本文档为"风之旅"主题，下列标识符沿用旧名以免漏改 selector：
+     .pixel-fish      → 纸鹤（天空中飘过的折纸鹤，图案见 assets/crane-*.svg）
+     #fish-field      → 纸鹤场（天空区域容器）
+     #fish-count      → 纸鹤计数 0/5
+     .fish-blessing   → 祝福纸条
+     .fish-caption    → "接住纸鹤" 提示
+     .sonar-button    → 风铃按钮
+     .sonar-field     → 风铃波纹场
+     .game-hud        → 风的刻度 / 云的高度 / 纸鹤计数
+     .underwater      → 天空与草原区
+     .water-rays      → 云隙光 / 风带
+     .bubble-field    → 风和叶屑
+     .restaurant-screen → 老街的木窗
+     .menu-board      → 亚麻布上的手写当日行程
+   ============================================================================ */
+
+:root{
+  /* 沿用旧变量名，只换色值 */
+  --deep:#F7F0E1;
+  --navy:#A8CFE0;
+  --sea:#8FAE6B;
+  --cyan:#DCEAF0;
+  --yellow:#E8A657;
+  --paper:#FFFBF2;
+  --pixel-shadow:none;
+
+  /* 吉卜力色阶 */
+  --ink:#3A3B33;
+  --ink-soft:#6B6A5E;
+  --ink-faint:#9A9689;
+  --sky:#A8CFE0;
+  --sky-deep:#7FB8D4;
+  --grass:#8FAE6B;
+  --grass-deep:#6E9153;
+  --sunset:#E8A657;
+  --sunset-deep:#D08A3E;
+  --brick:#B6463C;
+  --cream:#F7F0E1;
+  --cloud:#FFFDF6;
+  --kraft:#D9C3A0;
+  --kraft-deep:#BFA97F;
+  --linen:#EDE6D6;
+  --shadow:0 6px 18px rgba(58,59,51,.16);
+  --shadow-soft:0 3px 10px rgba(58,59,51,.10);
+  --stroke:2px solid rgba(58,59,51,.28);
+  --serif:"Songti SC","Noto Serif SC","Source Han Serif SC",Georgia,serif;
+  --sans:"PingFang SC","Hiragino Sans GB","Microsoft YaHei",system-ui,sans-serif;
+
+  /* 纸纹（内联 SVG 噪点，零外部请求） */
+  --grain:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)' opacity='.5'/%3E%3C/svg%3E");
+}
+
+*{box-sizing:border-box}
+
+html{scroll-behavior:smooth;background:var(--deep)}
+
+body{
+  margin:0;color:var(--ink);background:var(--deep);
+  font-family:var(--sans);font-size:15px;line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+}
+
+button,input,select,textarea{font:inherit;color:inherit}
+button,a{-webkit-tap-highlight-color:transparent}
+img{display:block;max-width:100%}
 [hidden]{display:none!important}
-.music-player>p{margin:3px 3px 7px;color:#b9ece9;font-size:9px}.music-player>a{display:block;padding:8px;border:2px solid #506d8b;color:#ffe04b;background:#0d2946;text-align:center;text-decoration:none;font-size:9px;font-weight:900}
-.official-logo{width:min(76vw,330px);filter:drop-shadow(0 4px 0 #003052)}.hero-venue{font-size:clamp(8px,2.45vw,10px)!important;letter-spacing:-.06em;white-space:nowrap}.fish-caption{display:flex;align-items:center;justify-content:center;gap:5px}.fish-caption small{color:#b8eff5;font-size:9px;letter-spacing:.08em}.fish-arrow{color:#ffe15a;font-size:20px;line-height:1;text-shadow:2px 2px 0 #003052;animation:fish-arrow-bounce .75s steps(2,end) infinite}.fish-blessing{position:absolute;z-index:6;max-width:160px;margin:0;padding:7px 9px;border:2px solid #003052;background:#fff2b8;color:#003052;box-shadow:3px 3px 0 #007a93;font-size:11px;font-weight:900;line-height:1.35;pointer-events:none;animation:blessing-pop 2.4s ease both}.fish-blessing::after{position:absolute;bottom:-7px;left:22px;width:10px;height:10px;border-right:2px solid #003052;border-bottom:2px solid #003052;background:#fff2b8;content:"";transform:rotate(45deg)}.music-dock{bottom:max(56px,calc(env(safe-area-inset-bottom) + 52px))}@keyframes fish-arrow-bounce{50%{transform:translateY(5px)}}@keyframes blessing-pop{0%{opacity:0;transform:translateY(12px) scale(.7)}14%,76%{opacity:1;transform:translateY(0) scale(1)}100%{opacity:0;transform:translateY(-20px) scale(.96)}}
-.hero-brand{position:absolute;z-index:2;top:16.5%;left:50%;width:min(82vw,365px);transform:translateX(-50%);filter:drop-shadow(0 4px 0 #003052)}.hero-brand img{width:100%;height:auto}
-.hero h1{display:flex;align-items:center;justify-content:center;gap:10px;white-space:nowrap}.hero h1 .name-word{display:block;color:var(--yellow);font:inherit;line-height:.9}.hero h1 .name-divider{display:block;color:#fff6b4;font-size:.62em;font-style:normal;line-height:1;transform:translateY(1px);-webkit-text-stroke:0;text-shadow:0 2px #052b52}
-.hero .hero-cn-name{margin:15px 0 0;font-size:clamp(32px,9.8vw,46px);letter-spacing:.065em}.hero-en-name{display:flex;align-items:center;justify-content:center;gap:7px;margin:9px 0 0;color:#fff6b4;font:900 clamp(14px,4.25vw,18px)/1 Impact,"Arial Black",sans-serif;letter-spacing:.08em;text-shadow:0 2px #00365f}.hero-en-name b{font:inherit}.hero-en-name i{color:var(--yellow);font-size:.82em;font-style:normal;line-height:1;transform:translateY(1px)}
-.hero .hero-cn-name{color:#fff6b4;font-family:"Arial Narrow","Microsoft YaHei",sans-serif;font-weight:900;-webkit-text-stroke:0;text-shadow:0 3px #00365f}.hero .hero-cn-name .name-word{color:#fff6b4;font-family:inherit}.hero .hero-cn-name .name-divider{color:#ffe35a;text-shadow:0 2px #00365f}.hero-en-name{color:var(--yellow);font-family:Impact,"Arial Black",sans-serif;-webkit-text-stroke:1px #8a5011;text-shadow:0 2px #ff992c,0 4px #052b52}.hero-en-name b{color:var(--yellow)}.hero-en-name i{color:#fff6b4;text-shadow:0 2px #052b52}
-.accept-button{-webkit-user-select:none;user-select:none;-webkit-touch-callout:none;touch-action:manipulation}
-.hero-names{width:min(70vw,310px);margin:15px auto 0;filter:drop-shadow(0 3px 0 #003052)}
-.demo-notice{margin:0 0 15px;padding:9px;border:2px dashed #ffe04c;color:#ffe98b;background:#071b33;font:900 8px/1.6 monospace;text-align:center}
-.rsvp-external{padding:38px 22px 32px;text-align:center}.rsvp-external h3{margin:17px 0 9px;color:#fff;font:900 20px/1.25 "Arial Narrow","Microsoft YaHei",sans-serif}.rsvp-external p{margin:0 0 22px;color:#b8dded;font:700 12px/1.8 monospace}.rsvp-external a{display:flex;align-items:center;justify-content:center;gap:12px;min-height:52px;border:3px solid #052b52;box-shadow:0 4px 0 #001d35;color:#052b52;background:#ffe24d;font:900 15px/1 "Arial Narrow","Microsoft YaHei",sans-serif;text-decoration:none}.rsvp-external a:focus-visible{outline:3px solid #fff;outline-offset:4px}
+
+/* 全局纸纹层：轻微哑光颗粒 */
+body::before{
+  content:"";position:fixed;inset:0;z-index:1;pointer-events:none;
+  background-image:var(--grain);opacity:.16;mix-blend-mode:multiply;
+}
+
+/* ---------------------------------------------------------------- 手机外壳 */
+.phone-shell{
+  position:relative;z-index:0;width:min(100%,480px);margin:auto;overflow:hidden;
+  background:var(--cream);box-shadow:0 0 60px rgba(58,59,51,.28);
+}
+
+/* -------------------------------------------------------------------- 首页 */
+.hero{position:relative;min-height:100svh;overflow:hidden;background:var(--sky)}
+
+.hero-art{
+  position:absolute;inset:0;width:100%;height:100%;
+  object-fit:cover;object-position:center 42%;
+}
+
+/* 首页遮罩：上部分压暗一点，给白色手写字提供对比；
+   下部分提亮（奶白），保证场地卡片与按钮上的深色文字清晰。
+   压暗范围要覆盖到日期那一行（约 40% 高度），否则日期对比度不足（实测只有 2.29）。 */
+.hero-shade{
+  position:absolute;inset:0;
+  background:linear-gradient(180deg,
+    rgba(30,62,92,.24) 0%,
+    rgba(30,62,92,.22) 20%,
+    rgba(30,62,92,.16) 34%,
+    rgba(30,62,92,.08) 44%,
+    rgba(30,62,92,0) 52%,
+    rgba(247,240,225,.42) 74%,
+    rgba(247,240,225,.95) 100%);
+}
+
+/* 草叶露水 / 飞鸟（原"海面波光"） */
+.surface-glitter{
+  position:absolute;inset:0;opacity:.5;
+  background-image:
+    radial-gradient(circle,rgba(255,255,255,.95) 0 1.4px,transparent 2px),
+    radial-gradient(circle,rgba(255,253,246,.9) 0 1px,transparent 1.8px);
+  background-position:12% 24%,74% 38%;
+  background-size:131px 173px,197px 149px;
+  animation:glitter 7s ease-in-out infinite;
+}
+
+/* 用绝对定位精确控制首页三层：顶部标识 / 中部姓名 / 底部场地与按钮。
+   原因：封面图里新人占满画面中部，flex 排布无法避开人物头部，只能按百分比定位。 */
+.hero{
+  position:relative;min-height:100svh;overflow:hidden;
+  background:var(--sky);
+}
+
+/* 顶部两个元素都去掉容器，让文字直接落在压暗的天空上。
+   原来两个几乎相同的白胶囊（同底色、同边框、同圆角、同灰绿文字）
+   读起来像悬浮的界面组件；改成白色小字 + 字距 + 细线装饰，才是邀请函的气质。
+   对比度由 .hero-shade 顶部的压暗层提供，不靠不透明底色。 */
+.hero-hud{
+  position:absolute;z-index:4;top:max(16px,env(safe-area-inset-top));left:20px;right:20px;
+  display:flex;justify-content:space-between;align-items:center;
+  color:rgba(255,255,255,.94);
+  font-size:8.5px;font-weight:600;letter-spacing:.3em;
+  text-shadow:0 1px 5px rgba(20,44,68,.6);
+  pointer-events:none;
+}
+
+/* 邀请函标识：一行小字，两侧细线 + 小星作装饰 */
+.hero-kicker{
+  position:absolute;z-index:3;top:calc(env(safe-area-inset-top) + 62px);left:50%;
+  display:flex;align-items:center;gap:10px;margin:0;
+  color:rgba(255,255,255,.96);
+  font-size:9.5px;font-weight:700;letter-spacing:.4em;
+  text-shadow:0 1px 6px rgba(20,44,68,.62);
+  transform:translateX(-50%);white-space:nowrap;
+}
+.hero-kicker::before,.hero-kicker::after{
+  content:"";width:32px;height:1px;
+  background:linear-gradient(90deg,transparent,rgba(255,255,255,.58));
+}
+.hero-kicker::after{background:linear-gradient(90deg,rgba(255,255,255,.58),transparent)}
+.hero-kicker i{color:rgba(255,255,255,.8);font-style:normal;letter-spacing:0;font-size:8px}
+
+/* 姓名与邀请语：落在天空区，避开画面里的人物头部。
+   原先是 top:24%，姓名下方还挂着一行日期，日期正好压在两人头顶（实测 37% 处）。
+   现在整体上移到 15%，并去掉那行日期，换成一句邀请语。 */
+.hero-meet{
+  position:absolute;z-index:3;top:15%;left:0;right:0;
+  display:flex;flex-direction:column;align-items:center;pointer-events:none;
+}
+/* 姓名与邀请语下方那一道自然压暗：封面图在 34% 处由暗转亮，
+   不加这一层的话白色手写字正好骑在明暗交界线上，读起来发花。 */
+.hero-meet::before{
+  content:"";position:absolute;z-index:-1;left:-12%;right:-12%;top:-18%;bottom:-26%;
+  background:radial-gradient(ellipse 74% 62% at 50% 48%,rgba(22,46,72,.42),rgba(22,46,72,0) 72%);
+}
+.hero-names{
+  width:min(76vw,320px);height:auto;
+  /* 白色手写字需要阴影才有对比度：先一层紧实的暗影定形，再两层柔和散影分离背景 */
+  filter:drop-shadow(0 1px 2px rgba(20,44,68,.8))
+         drop-shadow(0 3px 8px rgba(20,44,68,.55))
+         drop-shadow(0 8px 22px rgba(20,44,68,.4));
+}
+/* 邀请语：「婚礼邀请」四个字，作为姓名下方的副题。
+   尺寸按**字面实际高度**反推，不是拍宽度：新图墨迹 393×113，姓名墨迹 803×209，
+   渲染后姓名的字面高约 74px，取六成得目标字面高 45px → 图宽 = 45 × 393/113 ≈ 155px。
+   视觉上姓名是绝对主体，邀请语约占姓名宽度的四成、字面高度的六成。 */
+.hero-invite{
+  width:min(40vw,155px);height:auto;margin-top:16px;opacity:.94;
+  filter:drop-shadow(0 1px 2px rgba(20,44,68,.85))
+         drop-shadow(0 3px 7px rgba(20,44,68,.7))
+         drop-shadow(0 7px 18px rgba(20,44,68,.5));
+}
+
+/* 底部：按钮 + 提示。
+   原来这里还有一张「日期 + 场地」的白卡片，和顶部状态条的日期、场地章节的
+   地址重复了三遍，已删除；按钮相应上移。 */
+.hero-actions{
+  position:absolute;z-index:3;left:22px;right:22px;
+  bottom:calc(env(safe-area-inset-bottom) + 74px);
+  display:flex;flex-direction:column;align-items:center;
+}
+
+.dive-button{
+  display:flex;align-items:center;justify-content:center;gap:12px;
+  width:100%;max-width:320px;padding:14px 20px;
+  border:1px solid rgba(58,59,51,.3);border-radius:999px;
+  color:var(--ink);background:var(--sunset);
+  box-shadow:0 6px 0 rgba(58,59,51,.16);cursor:pointer;
+  font-size:13.5px;font-weight:900;letter-spacing:.06em;
+  transition:transform .2s ease,box-shadow .2s ease;
+}
+.dive-button:active{transform:translateY(3px);box-shadow:0 3px 0 rgba(58,59,51,.16)}
+.dive-button b{font-size:11px}
+
+.start-note{
+  margin:9px 0 0;color:var(--ink-faint);
+  font-size:9px;text-align:center;letter-spacing:.06em;
+}
+
+/* ------------------------------------------------------------- 顶部状态 HUD */
+.game-hud{
+  position:fixed;z-index:18;top:max(8px,env(safe-area-inset-top));left:50%;
+  display:flex;align-items:center;justify-content:space-between;
+  width:min(calc(100% - 16px),464px);padding:9px 14px;
+  border:1px solid rgba(58,59,51,.2);border-radius:999px;
+  color:var(--ink-soft);background:rgba(255,251,242,.88);
+  backdrop-filter:blur(8px);box-shadow:var(--shadow-soft);
+  font-size:9px;font-weight:700;letter-spacing:.1em;
+  transform:translateX(-50%) translateY(-160%);
+  transition:transform .5s ease;
+}
+.game-hud.is-visible{transform:translateX(-50%) translateY(0)}
+.depth,.caught{display:flex;align-items:baseline;gap:4px}
+.depth b,.caught b{color:var(--ink);font-size:15px;font-weight:900;letter-spacing:0}
+.depth span,.caught small{color:var(--ink-faint);font-weight:700}
+.oxygen{display:flex;align-items:center;gap:7px}
+.oxygen>span{color:var(--ink-faint);font-weight:700}
+.oxygen i{
+  display:block;width:56px;height:6px;overflow:hidden;
+  border-radius:999px;background:rgba(58,59,51,.13);
+}
+.oxygen b{display:block;height:100%;width:100%;border-radius:999px;background:var(--cloud);transform-origin:left center}
+
+/* ------------------------------------------------------------ 通用板块容器 */
+/* 每一章独占一屏：min-height 用 svh（小视口高度），移动端地址栏收起时不会跳动。
+   display:flex + justify-content:center 让内容在屏内垂直居中，而不是顶在上边留一大块空。
+   padding-bottom 让开底部固定的快捷导航（约 46px + 9px 间距），
+   因此可用的中心略高于屏幕正中 —— 这正好是视觉上舒服的位置。
+   用 min-height 而不是固定 height：内容万一超出仍会自然撑高，不会被裁掉。 */
+.story-section{
+  position:relative;overflow:hidden;
+  display:flex;flex-direction:column;justify-content:center;
+  min-height:100svh;padding:64px 22px 104px;
+  /* 整页 7 屏，只有 1~2 屏在视口内。让浏览器跳过屏幕外章节的布局与绘制，
+     滚动时不必反复重算 9 只飘动纸鹤和 28 个浮尘的动画 —— 这是页面发卡的主因之一。
+     用 auto 关键字保留内在尺寸，避免滚动条长度跳动。
+     注：content-visibility 之外的浏览器会忽略这条，不影响其它样式。 */
+  content-visibility:auto;
+  contain-intrinsic-size:auto 100svh;
+}
+/* 内容一律从左边起排，避免 flex 居中把块级子元素缩成内容宽度 */
+.story-section>*{width:100%;flex:0 0 auto}
+
+/* 天空 → 草原（一封信） */
+.underwater{
+  background:linear-gradient(180deg,#BFDCEA 0,#DCEAF0 30%,#EDE6D6 62%,#F7F0E1 100%);
+}
+
+/* 白云 → 草坡（风与纸鹤） */
+.chime-section{
+  background:linear-gradient(180deg,#F7F0E1 0,#DCEAF0 34%,#E4EDDD 66%,#E8DCC0 100%);
+}
+
+/* 云隙光 / 风带（原水下丁达尔光） */
+.water-rays{
+  position:absolute;inset:0;pointer-events:none;opacity:.5;
+  background:linear-gradient(102deg,transparent 22%,rgba(255,253,246,.72) 38%,transparent 54%) 0 0/220px 100% repeat-x;
+  animation:drift 14s ease-in-out infinite alternate;
+}
+
+/* 风与叶屑（原上浮气泡） */
+.bubble-field i{
+  position:absolute;bottom:-30px;width:7px;height:7px;border-radius:50%;
+  background:rgba(255,253,246,.85);opacity:.7;
+  animation:float var(--duration,7s) linear var(--delay,0s) infinite;
+}
+
+.section-title{position:relative;z-index:2;display:flex;gap:14px;align-items:center;margin-bottom:26px}
+.section-title>span{
+  display:grid;place-items:center;width:42px;height:42px;flex:0 0 42px;
+  border:1px solid rgba(58,59,51,.25);border-radius:50%;
+  color:var(--ink);background:rgba(255,251,242,.9);
+  font-family:var(--serif);font-size:16px;font-weight:900;
+  box-shadow:var(--shadow-soft);
+}
+.section-title p{margin:0 0 4px;color:var(--ink-faint);font-size:9px;font-weight:700;letter-spacing:.18em}
+.section-title h2{
+  margin:0;color:var(--ink);font-family:var(--serif);
+  font-size:22px;font-weight:900;letter-spacing:.08em;
+}
+
+/* -------------------------------------------------------------- 一封信卡片 */
+.mission-card{
+  position:relative;z-index:2;padding:22px 20px 20px;
+  border:1px solid rgba(58,59,51,.2);border-radius:16px;
+  color:var(--ink);background:var(--paper);
+  box-shadow:var(--shadow);
+}
+.mission-card::before{
+  content:"";position:absolute;inset:0;border-radius:16px;pointer-events:none;
+  background-image:var(--grain);opacity:.2;mix-blend-mode:multiply;
+}
+.mission-card::after{
+  content:"";position:absolute;inset:7px;border-radius:11px;
+  border:1px dashed rgba(58,59,51,.2);pointer-events:none;
+}
+.card-top{
+  position:relative;z-index:1;display:flex;justify-content:space-between;align-items:center;
+  padding-bottom:12px;border-bottom:1px solid rgba(58,59,51,.14);
+  color:var(--ink-faint);font-size:9px;font-weight:700;letter-spacing:.16em;
+}
+.card-top b{color:var(--sunset-deep);font-weight:900}
+.mission-card h3{
+  position:relative;z-index:1;margin:16px 0 10px;color:var(--ink);
+  font-family:var(--serif);font-size:21px;font-weight:900;letter-spacing:.05em;
+}
+.mission-card>p{position:relative;z-index:1;margin:0 0 18px;color:var(--ink-soft);font-size:13px;line-height:1.95}
+.mission-card dl{position:relative;z-index:1;margin:0;border-top:1px solid rgba(58,59,51,.14)}
+.mission-card dl div{display:grid;grid-template-columns:60px 1fr;gap:10px;padding:11px 0;border-bottom:1px solid rgba(58,59,51,.1)}
+.mission-card dt{color:var(--ink-faint);font-size:9px;font-weight:700;letter-spacing:.12em;line-height:1.9}
+.mission-card dd{margin:0;color:var(--ink);font-size:12px;font-weight:700;line-height:1.6}
+.venue-one-line{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+
+.accept-button{
+  position:relative;z-index:1;width:100%;margin-top:18px;padding:14px;
+  border:1px solid rgba(58,59,51,.28);border-radius:999px;
+  color:var(--ink);background:var(--sunset);
+  box-shadow:0 5px 0 rgba(58,59,51,.14);cursor:pointer;
+  font-size:13px;font-weight:900;letter-spacing:.06em;
+  -webkit-user-select:none;user-select:none;-webkit-touch-callout:none;touch-action:manipulation;
+  transition:transform .2s ease;
+}
+.accept-button:active{transform:translateY(2px)}
+.hold-progress{position:relative;z-index:1;height:4px;margin-top:10px;border-radius:999px;background:rgba(58,59,51,.12);overflow:hidden}
+.hold-progress i{display:block;width:0;height:100%;border-radius:999px;background:var(--grass-deep)}
+.mission-card.is-holding .hold-progress i{width:100%;transition:width 1.2s linear}
+.mission-card.is-accepted .accept-button{background:var(--grass);color:#2C3A22}
+
+.mission-complete{
+  position:relative;z-index:2;display:flex;flex-direction:column;gap:5px;align-items:center;
+  max-height:0;margin:0 0 0;padding:0 18px;overflow:hidden;opacity:0;
+  border-radius:14px;color:var(--ink);background:rgba(255,251,242,.92);
+  transition:max-height .5s ease,opacity .5s ease,margin .5s ease,padding .5s ease;
+}
+.mission-complete.show{max-height:120px;margin-top:16px;padding:16px 18px;opacity:1;box-shadow:var(--shadow-soft)}
+.mission-complete b{color:var(--grass-deep);font-size:11px;font-weight:900;letter-spacing:.18em}
+.mission-complete span{color:var(--ink-soft);font-size:11px}
+
+/* ------------------------------------------------------------ 风铃与纸鹤区 */
+.exploration-frame{
+  position:relative;z-index:2;margin-top:36px;overflow:hidden;
+  border:1px solid rgba(58,59,51,.22);border-radius:16px;
+  box-shadow:var(--shadow);
+}
+.exploration-frame>img{width:100%;aspect-ratio:16/9;object-fit:cover}
+
+.camera-corners::before,.camera-corners::after{
+  content:"";position:absolute;width:24px;height:24px;top:11px;
+  border-style:solid;border-color:rgba(255,251,242,.85);
+}
+.camera-corners::before{left:11px;border-width:2px 0 0 2px;border-top-left-radius:6px}
+.camera-corners::after{right:11px;border-width:2px 2px 0 0;border-top-right-radius:6px}
+
+/* 风铃按钮（原声呐按钮） */
+.sonar-button{
+  position:absolute;right:14px;bottom:14px;width:60px;height:60px;padding:0;
+  border:1px solid rgba(58,59,51,.3);border-radius:50%;
+  color:var(--ink);cursor:pointer;
+  /* 去掉 backdrop-filter:blur(4px)：这层模糊叠在正在飘动的纸鹤上，
+     会强迫浏览器在每次合成时重算模糊，是卡顿的第二个来源。
+     改为不透明度略高的纯色底，观感差别很小。 */
+  background:rgba(255,251,242,.92);
+  box-shadow:var(--shadow-soft);
+  font-size:9px;font-weight:900;letter-spacing:.1em;line-height:1;
+  transition:transform .2s ease;
+}
+.sonar-button::before{
+  content:"";position:absolute;left:50%;top:9px;width:2px;height:12px;
+  background:rgba(58,59,51,.45);transform:translateX(-50%);
+}
+.sonar-button::after{
+  content:"";position:absolute;left:50%;top:20px;width:19px;height:19px;
+  border:2px solid var(--sunset-deep);border-radius:50% 50% 42% 42%;
+  background:rgba(232,166,87,.35);transform:translateX(-50%);
+}
+.sonar-button:active{transform:scale(.94)}
+.sonar-button span{display:none}
+
+.sonar-field{position:absolute;inset:0;pointer-events:none}
+.sonar-field i{
+  position:absolute;left:50%;bottom:44px;width:26px;height:26px;
+  border:1.5px solid rgba(255,251,242,.9);border-radius:50%;
+  transform:translate(-50%,50%);animation:chime 1.5s ease-out both;
+}
+
+/* 风铃三响的祝福纸条：一次一组，共四组十二句 */
+.chime-note{
+  position:absolute;right:16px;z-index:5;width:max-content;max-width:74%;
+  padding:8px 13px;
+  border:0;border-radius:3px 10px 3px 10px;
+  color:var(--ink);background:rgba(255,251,242,.95);
+  box-shadow:0 4px 10px rgba(58,59,51,.2);
+  font-size:10.5px;font-weight:400;letter-spacing:.06em;line-height:1.5;
+  transform:rotate(-1deg);
+  animation:blessing-pop 2.6s ease both;
+}
+.chime-note:nth-of-type(2){transform:rotate(.8deg)}
+.chime-note:nth-of-type(3){transform:rotate(-.5deg)}
+
+.scene-caption{
+  position:relative;z-index:2;display:flex;flex-direction:column;align-items:center;gap:2px;
+  margin:20px 0 0;color:var(--ink-soft);font-size:11px;text-align:center;letter-spacing:.04em;
+}
+.scene-caption small{color:var(--ink-faint);font-size:9px;letter-spacing:.12em}
+.fish-arrow{color:var(--sunset-deep);font-size:16px;line-height:1;animation:arrow-float 1.8s ease-in-out infinite}
+
+/* 纸鹤场（原鱼场） */
+/* isolation:isolate 让 9 只纸鹤的合成层收在这一块里，
+   不会去影响页面上其它元素的重绘判断，滚动时更稳。 */
+.fish-field{position:relative;z-index:2;height:220px;margin-top:18px;overflow:hidden;isolation:isolate}
+.pixel-fish{
+  position:absolute;left:0;width:44px;height:44px;padding:0;
+  border:0;background-color:transparent;
+  /* 图案由下面按 data-tone 指定的真实折纸鹤 SVG 提供，不再用「鶴」字形 */
+  background-repeat:no-repeat;background-position:center;background-size:contain;
+  cursor:pointer;
+  /* 这里原先挂了一条 filter:drop-shadow。
+     它会让 9 只纸鹤每帧都重新做一次模糊运算（filter 动画无法交给合成器），
+     是这一屏卡顿的主因，已删除。
+     纸鹤的轮廓由 SVG 里那条墨色折痕线保证，去掉投影后不至于糊在天空上。 */
+  animation:glide var(--swim,13s) linear infinite;
+  animation-delay:var(--delay,0s);
+  will-change:transform;
+}
+/* 五色纸鹤：与 style.css 调色板一致，SVG 由 tools/build-cranes.py 生成 */
+.pixel-fish[data-tone=sunset]{background-image:url("assets/crane-sunset.svg")}
+.pixel-fish[data-tone=brick]{background-image:url("assets/crane-brick.svg")}
+.pixel-fish[data-tone=grass]{background-image:url("assets/crane-grass.svg")}
+.pixel-fish[data-tone=road]{background-image:url("assets/crane-road.svg")}
+.pixel-fish[data-tone=ink]{background-image:url("assets/crane-ink.svg")}
+/* 尾部留一道极淡的风痕，交代它是被风吹过来的 */
+.pixel-fish::after{
+  content:"";position:absolute;left:-16px;top:21px;width:16px;height:1px;
+  background:linear-gradient(90deg,transparent,rgba(255,251,242,.72));
+}
+.pixel-fish.caught{animation:caught .6s ease-in forwards;pointer-events:none}
+
+/* 祝福纸条（原卡通气泡）：与风铃祝福共用「纸片」语言，只有折角不同 */
+.fish-blessing{
+  position:absolute;z-index:6;max-width:180px;margin:0;padding:9px 13px;
+  border:0;border-radius:3px 10px 3px 10px;
+  color:var(--ink);background:var(--paper);
+  box-shadow:0 5px 12px rgba(58,59,51,.22);
+  font-size:11px;font-weight:400;line-height:1.6;letter-spacing:.04em;
+  transform:rotate(-1.6deg);pointer-events:none;
+  animation:blessing-pop 2.6s ease both;
+}
+/* 折角：纸片被风吹起的一角，同时指向纸鹤 */
+.fish-blessing::after{
+  content:"";position:absolute;bottom:-5px;left:22px;width:10px;height:10px;
+  background:var(--paper);transform:rotate(45deg);
+  box-shadow:3px 3px 5px rgba(58,59,51,.12);
+}
+/* 纸条落在纸鹤左侧时，折角改到右下角，指向纸鹤 */
+.fish-blessing[data-side=left]::after{left:auto;right:22px}
+.fish-unlock{
+  position:absolute;left:50%;top:2px;margin:0;padding:10px 18px;
+  width:max-content;max-width:94%;border-radius:3px 12px 3px 12px;transform:translateX(-50%);
+  color:var(--ink);background:rgba(255,251,242,.96);box-shadow:0 5px 14px rgba(58,59,51,.2);
+  font-size:11px;font-weight:400;letter-spacing:.06em;
+}
+
+/* ------------------------------------------------------------ 风车邮局来信 */
+.crew-section{
+  padding-bottom:68px;
+  background:linear-gradient(180deg,#E8DCC0 0,#D9C3A0 40%,#C9AF88 100%);
+}
+.crew-section .section-title>span{background:rgba(255,251,242,.86)}
+.crew-phone{
+  position:relative;z-index:2;padding:14px;
+  border:1px solid rgba(58,59,51,.24);border-radius:18px;
+  background:var(--paper);box-shadow:var(--shadow);
+}
+.phone-top{
+  display:flex;justify-content:space-between;align-items:center;
+  padding:4px 6px 13px;margin-bottom:6px;
+  border-bottom:1px solid rgba(58,59,51,.14);
+  color:var(--ink-faint);font-size:9px;font-weight:700;letter-spacing:.18em;
+}
+.phone-top b{color:var(--sunset-deep);font-weight:900;letter-spacing:.16em}
+
+.crew-slides{position:relative}
+.crew-slide{
+  display:none;margin:0;overflow:hidden;border-radius:12px;
+}
+.crew-slide.is-active{display:block;animation:fade-in .5s ease both}
+.crew-slide img{width:100%;aspect-ratio:4/3;object-fit:cover;object-position:center 30%}
+.crew-slide p{
+  margin:0;padding:16px 18px 18px;color:var(--ink-soft);
+  background:var(--linen);
+  font-family:var(--serif);font-size:13px;font-weight:700;line-height:1.95;letter-spacing:.04em;
+}
+
+.crew-controls{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:13px}
+.crew-controls button{
+  width:44px;height:44px;border:1px solid rgba(58,59,51,.24);border-radius:50%;
+  color:var(--ink);background:var(--cream);cursor:pointer;
+  font-size:13px;box-shadow:var(--shadow-soft);
+}
+.crew-controls button:active{transform:scale(.94)}
+.crew-controls output{color:var(--ink-faint);font-size:10px;font-weight:700;letter-spacing:.14em}
+
+/* ----------------------------------------------------------- 旅人手账日程 */
+.schedule-section{
+  background:
+    repeating-linear-gradient(90deg,rgba(58,59,51,.045) 0 1px,transparent 1px 9px),
+    repeating-linear-gradient(0deg,rgba(58,59,51,.045) 0 1px,transparent 1px 9px),
+    linear-gradient(180deg,#EDE6D6,#E2D9C4);
+}
+.section-title.light p{color:var(--ink-faint)}
+
+.restaurant-screen{
+  position:relative;z-index:2;overflow:hidden;
+  border:1px solid rgba(58,59,51,.22);border-radius:16px;
+  box-shadow:var(--shadow);
+}
+.restaurant-screen img{width:100%;aspect-ratio:16/9;object-fit:cover}
+.restaurant-status{
+  position:absolute;left:14px;bottom:14px;display:flex;align-items:center;gap:8px;
+  padding:7px 14px;border-radius:999px;
+  color:var(--ink);background:rgba(255,251,242,.9);
+  font-size:9px;font-weight:900;letter-spacing:.16em;
+  box-shadow:var(--shadow-soft);
+}
+.restaurant-status i{display:block;width:7px;height:7px;border-radius:50%;background:var(--grass-deep);animation:blink 2.4s ease-in-out infinite}
+
+/* 亚麻布上的手写便当单 */
+.menu-board{
+  position:relative;z-index:2;margin-top:28px;padding:22px 20px 16px;
+  border:1px solid rgba(58,59,51,.2);border-radius:14px;
+  color:var(--ink);background:var(--linen);box-shadow:var(--shadow);
+}
+.menu-board::before{
+  content:"";position:absolute;inset:0;border-radius:14px;pointer-events:none;
+  background-image:var(--grain);opacity:.22;mix-blend-mode:multiply;
+}
+.board-title{
+  position:relative;z-index:1;margin:0 0 6px;padding-bottom:12px;
+  border-bottom:1px solid rgba(58,59,51,.18);
+  color:var(--ink-faint);font-size:9px;font-weight:700;letter-spacing:.2em;text-align:center;
+}
+.menu-board article{
+  position:relative;z-index:1;display:grid;grid-template-columns:58px 1fr auto;
+  gap:12px;align-items:center;padding:15px 0;
+  border-bottom:1px dashed rgba(58,59,51,.2);
+}
+.menu-board time{color:var(--sunset-deep);font-family:var(--serif);font-size:17px;font-weight:900}
+.menu-board article b{display:block;color:var(--ink);font-size:13px;font-weight:900}
+.menu-board article span{display:block;margin-top:5px;color:var(--ink-soft);font-size:10px;line-height:1.6}
+.menu-board strong{color:var(--grass-deep);font-size:11px;letter-spacing:.1em}
+.menu-total{
+  position:relative;z-index:1;display:flex;justify-content:space-between;align-items:center;
+  padding-top:15px;color:var(--ink-faint);font-size:9px;font-weight:700;letter-spacing:.18em;
+}
+.menu-total b{color:var(--sunset-deep);font-family:var(--serif);font-size:15px;letter-spacing:.06em}
+
+.countdown-card{
+  position:relative;z-index:2;display:flex;align-items:baseline;justify-content:center;gap:10px;
+  margin:28px 14px 0;padding:16px;border-radius:14px;
+  border:1px solid rgba(58,59,51,.18);
+  color:var(--ink-soft);background:rgba(255,251,242,.82);
+  box-shadow:var(--shadow-soft);font-size:9px;font-weight:700;letter-spacing:.18em;
+}
+.countdown-card b{color:var(--sunset-deep);font-family:var(--serif);font-size:31px;font-weight:900;letter-spacing:0}
+
+/* 地图卡片里的场地照片 */
+.hotel-shot{
+  position:relative;z-index:2;margin:0 22px 18px;overflow:hidden;
+  border:1px solid rgba(58,59,51,.22);border-radius:14px;
+  background:var(--paper);box-shadow:var(--shadow-soft);
+}
+.hotel-shot img{width:100%;aspect-ratio:16/9;object-fit:cover}
+.hotel-shot figcaption{
+  padding:10px 13px;color:var(--ink);
+  font-family:var(--serif);font-size:12.5px;font-weight:900;letter-spacing:.04em;
+}
+
+/* ------------------------------------------------------------- 手绘地图区 */
+.arrival{background:linear-gradient(180deg,#E2D9C4,#EDE6D6)}
+.arrival .section-title p{color:var(--ink-faint)}
+.arrival .section-title h2{color:var(--ink)}
+.arrival .section-title>span{background:rgba(255,251,242,.9)}
+
+.map-console{
+  position:relative;z-index:2;min-height:340px;padding:0 0 20px;overflow:hidden;
+  border:1px solid rgba(58,59,51,.22);border-radius:16px;
+  background:var(--kraft);box-shadow:var(--shadow);
+}
+.map-console::before{
+  content:"";position:absolute;inset:0;pointer-events:none;
+  background-image:var(--grain);opacity:.24;mix-blend-mode:multiply;
+}
+.map-grid{position:absolute;top:0;left:0;right:0;height:190px;overflow:hidden}
+.map-grid::before{
+  content:"";position:absolute;inset:0;
+  background-image:url("../assets/scene-map.webp");
+  background-size:cover;background-position:center;
+}
+.map-grid::after{
+  content:"";position:absolute;inset:0;
+  background:linear-gradient(180deg,rgba(217,195,160,.1),rgba(217,195,160,.92));
+}
+.map-pulse{
+  position:relative;z-index:2;display:grid;place-items:center;width:44px;height:44px;margin:-22px auto 0;
+  border-radius:50%;background:rgba(255,251,242,.95);box-shadow:var(--shadow-soft);
+}
+.map-pulse i{position:absolute;inset:0;border:1.5px solid var(--brick);border-radius:50%;animation:mapPulse 2.6s ease-out infinite}
+.map-pulse b{color:var(--brick);font-size:16px;line-height:1}
+
+.coordinate{
+  position:relative;z-index:2;display:block;margin:16px 22px 0;
+  color:var(--ink-faint);font-size:9px;font-weight:700;letter-spacing:.2em;
+}
+.map-console h3{position:relative;z-index:2;margin:9px 22px 10px;color:var(--ink);font-family:var(--serif);font-size:16px;font-weight:900;line-height:1.55}
+.map-console>p:not(.coordinate){position:relative;z-index:2;margin:0 22px 18px;color:var(--ink-soft);font-size:11px;line-height:1.75}
+.map-console a{
+  position:relative;z-index:2;display:flex;justify-content:center;align-items:center;gap:9px;
+  margin:0 22px;padding:14px;border-radius:999px;
+  border:1px solid rgba(58,59,51,.26);
+  color:var(--ink);background:var(--sunset);box-shadow:0 5px 0 rgba(58,59,51,.14);
+  text-decoration:none;font-size:12.5px;font-weight:900;letter-spacing:.04em;
+}
+.map-console a:active{transform:translateY(2px)}
+
+/* -------------------------------------------------------------- 旅人名册区 */
+.rsvp-section{background:linear-gradient(180deg,#EDE6D6,#DCCFB4 60%,#E8DCC0)}
+.rsvp-phone{
+  position:relative;z-index:2;padding:16px;
+  border:1px solid rgba(58,59,51,.24);border-radius:18px;
+  background:var(--kraft);box-shadow:var(--shadow);
+}
+.rsvp-phone::before{
+  content:"";position:absolute;inset:0;border-radius:18px;pointer-events:none;
+  background-image:var(--grain);opacity:.2;mix-blend-mode:multiply;
+}
+.app-bar{
+  position:relative;z-index:1;display:flex;align-items:center;gap:9px;
+  padding:4px 4px 14px;margin-bottom:14px;
+  border-bottom:1px solid rgba(58,59,51,.18);
+  color:var(--ink);font-size:10px;font-weight:900;letter-spacing:.16em;
+}
+.app-bar span{color:var(--sunset-deep);font-size:14px}
+.app-bar small{margin-left:auto;color:var(--ink-faint);font-size:8px;letter-spacing:.14em}
+
+.rsvp-phone form{
+  position:relative;z-index:1;padding:18px 16px 16px;border-radius:12px;
+  background:var(--paper);box-shadow:var(--shadow-soft);
+  background-image:repeating-linear-gradient(0deg,transparent 0 30px,rgba(58,59,51,.07) 30px 31px);
+}
+.rsvp-phone form>label,.date-fields label{display:block;margin-bottom:16px}
+.rsvp-phone label>span,.rsvp-phone legend{
+  display:block;margin-bottom:7px;color:var(--ink-soft);
+  font-size:10px;font-weight:700;letter-spacing:.1em;
+}
+.rsvp-phone label>span b,.rsvp-phone legend b{color:var(--brick)}
+.rsvp-phone input,.rsvp-phone select,.rsvp-phone textarea{
+  width:100%;padding:12px 13px;border:1px solid rgba(58,59,51,.24);border-radius:10px;
+  outline:none;color:var(--ink);background:var(--cream);
+  font-size:13px;transition:border-color .2s ease,box-shadow .2s ease;
+}
+.rsvp-phone input:focus,.rsvp-phone select:focus,.rsvp-phone textarea:focus{
+  border-color:var(--sunset-deep);box-shadow:0 0 0 3px rgba(232,166,87,.22);
+}
+.rsvp-phone [aria-invalid="true"]{border-color:var(--brick)!important}
+.rsvp-phone textarea{resize:vertical;min-height:88px;line-height:30px}
+.rsvp-phone label>small{display:block;margin-top:6px;color:var(--ink-faint);text-align:right;font-size:9px;letter-spacing:.1em}
+.rsvp-phone fieldset{margin:0 0 16px;padding:0;border:0}
+
+.choice-row{display:flex;gap:10px}
+.choice-row label{display:block;flex:1;margin:0}
+.choice-row input{position:absolute;opacity:0;pointer-events:none;width:0;height:0}
+.choice-row span{
+  display:block;padding:11px;border:1px solid rgba(58,59,51,.24);border-radius:10px;
+  color:var(--ink-soft);background:var(--cream);text-align:center;
+  font-size:12px;font-weight:700;transition:all .2s ease;
+}
+.choice-row input:checked+span{border-color:var(--grass-deep);color:#2C3A22;background:rgba(143,174,107,.32)}
+.choice-row input:focus-visible+span{box-shadow:0 0 0 3px rgba(232,166,87,.3)}
+
+.date-fields{margin-bottom:6px}
+.date-fields input{font-size:12px}
+
+.form-error{
+  margin:0 0 14px;padding:11px 13px;border:1px solid rgba(182,70,60,.4);border-radius:10px;
+  color:var(--brick);background:rgba(182,70,60,.08);font-size:11px;font-weight:700;line-height:1.65;
+}
+
+.submit-button{
+  display:flex;align-items:center;justify-content:center;gap:11px;
+  width:100%;padding:15px;border:1px solid rgba(58,59,51,.28);border-radius:999px;
+  color:var(--ink);background:var(--sunset);box-shadow:0 5px 0 rgba(58,59,51,.14);
+  cursor:pointer;font-size:13.5px;font-weight:900;letter-spacing:.05em;
+}
+.submit-button:disabled{opacity:.6;cursor:default;transform:none}
+.submit-button b{font-size:10px}
+
+/* 木刻印章（原成功雷达） */
+.rsvp-success{
+  position:relative;z-index:1;padding:34px 20px 24px;text-align:center;
+  border-radius:12px;background:var(--paper);box-shadow:var(--shadow-soft);
+}
+.success-radar{
+  position:relative;display:grid;place-items:center;width:76px;height:76px;margin:0 auto 18px;
+  border:3px solid var(--brick);border-radius:50%;color:var(--brick);
+  transform:rotate(-8deg);
+}
+.success-radar i{position:absolute;inset:5px;border:1px solid var(--brick);border-radius:50%;opacity:.5}
+.success-radar b{font-size:29px;line-height:1}
+.rsvp-success h3{margin:0 0 11px;color:var(--ink);font-family:var(--serif);font-size:19px;font-weight:900}
+.rsvp-success p{margin:0 0 22px;color:var(--ink-soft);font-size:12px;line-height:1.85}
+.rsvp-success button{
+  padding:12px 26px;border:1px solid rgba(58,59,51,.26);border-radius:999px;
+  color:var(--ink);background:var(--cream);cursor:pointer;
+  font-size:12px;font-weight:900;letter-spacing:.06em;box-shadow:var(--shadow-soft);
+}
+
+.demo-notice{
+  margin:0 0 18px;padding:11px;border-radius:10px;
+  border:1px dashed rgba(58,59,51,.3);
+  color:var(--ink-soft);background:rgba(232,166,87,.12);
+  font-size:10px;line-height:1.75;
+}
+
+/* 飞书外链模式 */
+.rsvp-external{position:relative;z-index:1;padding:36px 22px 30px;text-align:center;border-radius:12px;background:var(--paper);box-shadow:var(--shadow-soft)}
+.rsvp-external h3{margin:17px 0 10px;color:var(--ink);font-family:var(--serif);font-size:19px;font-weight:900}
+.rsvp-external p{margin:0 0 22px;color:var(--ink-soft);font-size:12px;line-height:1.85}
+.rsvp-external a{
+  display:flex;align-items:center;justify-content:center;gap:12px;
+  min-height:54px;border:1px solid rgba(58,59,51,.28);border-radius:999px;
+  color:var(--ink);background:var(--sunset);box-shadow:0 5px 0 rgba(58,59,51,.14);
+  font-size:14px;font-weight:900;letter-spacing:.04em;text-decoration:none;
+}
+.rsvp-external a:focus-visible{outline:3px solid var(--sunset-deep);outline-offset:4px}
+
+/* ------------------------------------------------------------------ 抽卡层 */
+/* 底色接住 05 的收尾（#E8DCC0）再淡出到 linen，和 01–05 是同一段调子；
+   原先用的 #DCCFB4 → #C9AF88 偏深偏棕，夹在 05 的浅奶白和结尾的 cream 之间像另一套页面。
+   再用一层 9px 细网格纸纹，呼应 03 旅人手账那一章。 */
+.draw-section{
+  background:
+    repeating-linear-gradient(90deg,rgba(58,59,51,.035) 0 1px,transparent 1px 9px),
+    repeating-linear-gradient(0deg,rgba(58,59,51,.035) 0 1px,transparent 1px 9px),
+    linear-gradient(180deg,#E8DCC0,#EFE8D8 55%,#F7F0E1);
+}
+/* 标题左对齐（与前五章一致），下面这一列元素整体居中 */
+.draw-stage-area{display:flex;flex-direction:column;align-items:center}
+.draw-lead{
+  position:relative;z-index:2;max-width:330px;margin:0 0 24px;
+  color:var(--ink-soft);font-size:12.5px;line-height:1.9;text-align:center;
+}
+.draw-open{
+  display:flex;align-items:center;justify-content:center;gap:12px;
+  width:100%;max-width:330px;margin:0;padding:15px;
+  border:1px solid rgba(58,59,51,.28);border-radius:999px;
+  color:var(--ink);background:var(--paper);box-shadow:0 5px 0 rgba(58,59,51,.14);
+  cursor:pointer;font-size:14px;font-weight:900;letter-spacing:.05em;
+}
+.draw-open b{color:var(--sunset-deep);font-size:11px}
+
+/* 摊开的牌堆：露出的是牌背，不是空白方框 */
+.draw-deck{position:relative;z-index:2;width:100%;height:158px;margin:0 0 22px;max-width:330px;pointer-events:none}
+.draw-deck i{
+  /* i 默认是 inline，不加 display:block 的话 position/width/height 全部失效，
+     牌背会退化成按内容撑开的方块并互相挤开 —— 这是原先就有的隐藏 bug */
+  display:block;
+  position:absolute;left:50%;bottom:0;width:78px;height:118px;margin-left:-39px;
+  border:1px solid rgba(58,59,51,.3);border-radius:8px;
+  background-color:#DCC9A6;
+  /* 牌背纹样：斜向细斜纹 + 十字暗纹，和场地卡片同一套「纸」语言 */
+  background-image:
+    repeating-linear-gradient(45deg,rgba(58,59,51,.07) 0 1px,transparent 1px 7px),
+    repeating-linear-gradient(-45deg,rgba(58,59,51,.07) 0 1px,transparent 1px 7px);
+  box-shadow:0 6px 14px rgba(58,59,51,.22);transform-origin:bottom center;
+}
+/* 牌背中央的风车邮戳 */
+.draw-deck i::after{
+  content:"";position:absolute;left:50%;top:50%;width:24px;height:24px;
+  margin:-12px 0 0 -12px;border:1px solid rgba(58,59,51,.34);border-radius:50%;
+  background:radial-gradient(circle,rgba(255,251,242,.85) 0 40%,transparent 41%);
+}
+.draw-deck i:nth-child(1){transform:rotate(-21deg) translateX(-46px)}
+.draw-deck i:nth-child(2){transform:rotate(-10deg) translateX(-24px)}
+.draw-deck i:nth-child(3){transform:rotate(0deg)}
+.draw-deck i:nth-child(4){transform:rotate(10deg) translateX(24px)}
+.draw-deck i:nth-child(5){transform:rotate(21deg) translateX(46px)}
+.draw-section.is-open .draw-deck i{animation:deck-out .6s ease both}
+
+.draw-layer{
+  position:fixed;inset:0;z-index:60;display:grid;place-items:center;
+  padding:22px;background:rgba(58,59,51,.62);backdrop-filter:blur(5px);
+  animation:fade-in .35s ease both;
+}
+.draw-layer[hidden]{display:none!important}
+.draw-panel{
+  position:relative;width:min(100%,400px);padding:26px 20px 22px;
+  border-radius:20px;background:var(--paper);box-shadow:0 18px 50px rgba(28,28,24,.42);
+  text-align:center;
+}
+.draw-panel::before{
+  content:"";position:absolute;inset:0;border-radius:20px;pointer-events:none;
+  background-image:var(--grain);opacity:.18;mix-blend-mode:multiply;
+}
+.draw-title{position:relative;z-index:1;margin:0 0 6px;color:var(--ink);font-family:var(--serif);font-size:18px;font-weight:900;letter-spacing:.06em}
+.draw-sub{position:relative;z-index:1;margin:0 0 20px;color:var(--ink-faint);font-size:10px;letter-spacing:.14em}
+.draw-stage{position:relative;z-index:1;display:grid;place-items:center;min-height:260px;margin-bottom:20px}
+
+/* 牌背：中央是真实折纸鹤图案（原「鶴」字形），外面一圈纸纹与双线框 */
+.draw-back{
+  position:relative;display:grid;place-items:center;width:150px;height:225px;padding:0;
+  border:1px solid rgba(58,59,51,.34);border-radius:12px;
+  color:var(--ink-soft);background-color:#DFCDA9;
+  background-image:
+    repeating-linear-gradient(45deg,rgba(58,59,51,.06) 0 1px,transparent 1px 8px),
+    repeating-linear-gradient(-45deg,rgba(58,59,51,.06) 0 1px,transparent 1px 8px);
+  box-shadow:0 8px 20px rgba(58,59,51,.28);
+  cursor:pointer;
+  animation:breathe 2.8s ease-in-out infinite;
+}
+.draw-back::before{
+  content:"";position:absolute;inset:8px;border:1px solid rgba(58,59,51,.28);border-radius:7px;
+}
+.draw-back::after{
+  content:"";position:absolute;inset:12px;border:1px solid rgba(58,59,51,.16);border-radius:5px;
+}
+.draw-back span{
+  width:64px;height:64px;
+  background-image:url("assets/crane-brick.svg");
+  background-repeat:no-repeat;background-position:center;background-size:contain;
+  filter:drop-shadow(0 2px 3px rgba(58,59,51,.24));
+}
+.draw-back:active{transform:scale(.97)}
+
+/* 抽到的卡片：直接整张显示新人做好的成品卡。
+   卡面本身已经把姓名、婚期、地点、日程和纸纹都印好了，所以这里**只给投影**：
+   再套一层 CSS 相框会变成"框里还有框"，再印一行卡名也是重复信息。
+   卡面是 9:16 竖版，靠 width 控制大小，高度让它按比例自己长。 */
+.draw-card{
+  position:relative;display:flex;flex-direction:column;align-items:center;
+  width:min(84%,222px);margin:0;
+  animation:flip-in .7s ease both;
+}
+.draw-card img{
+  display:block;width:100%;height:auto;
+  border-radius:4px;
+  box-shadow:
+    0 18px 38px rgba(45,40,30,.34),
+    0 4px 10px rgba(45,40,30,.18);
+}
+/* 卡名放在成品卡之外，不压在卡面上 */
+.card-plate{
+  display:flex;align-items:center;gap:9px;margin-top:14px;
+  color:var(--ink-soft);font-size:10px;font-weight:700;letter-spacing:.22em;
+}
+.card-plate span{width:18px;height:18px;
+  background-repeat:no-repeat;background-position:center;background-size:contain}
+.card-plate span[data-tone=sunset]{background-image:url("assets/crane-sunset.svg")}
+.card-plate span[data-tone=brick]{background-image:url("assets/crane-brick.svg")}
+.card-plate span[data-tone=grass]{background-image:url("assets/crane-grass.svg")}
+.card-plate span[data-tone=road]{background-image:url("assets/crane-road.svg")}
+.card-plate span[data-tone=ink]{background-image:url("assets/crane-ink.svg")}
+
+.draw-actions{position:relative;z-index:1;display:grid;gap:10px}
+.draw-actions button{
+  padding:13px;border:1px solid rgba(58,59,51,.26);border-radius:999px;
+  color:var(--ink);background:var(--cream);box-shadow:var(--shadow-soft);
+  cursor:pointer;font-size:12.5px;font-weight:900;letter-spacing:.05em;
+}
+.draw-actions button.primary{background:var(--sunset);box-shadow:0 5px 0 rgba(58,59,51,.14)}
+.draw-actions button:disabled{opacity:.55;cursor:default}
+.draw-note{position:relative;z-index:1;margin:12px 0 0;color:var(--ink-faint);font-size:9.5px;line-height:1.7;letter-spacing:.04em}
+
+/* -------------------------------------------------------------------- 结尾 */
+/* 结尾也占满一屏；底部固定导航会压住画面，所以内容整体上移 */
+.ending{min-height:100svh;padding:0 0 104px;background:var(--cream)}
+.ending>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 55%}
+.ending::after{
+  content:"";position:absolute;inset:0;
+  background:linear-gradient(180deg,rgba(247,240,225,.1),rgba(58,59,51,.28) 58%,rgba(40,42,33,.66));
+}
+/* 结尾文案改用正常流 + flex 居中。
+   原先用 position:absolute + left/right:22px 定位；上一轮给 .story-section>* 加了 width:100%
+   之后，绝对定位元素被撑成内容区整宽（346px）却仍从 left:22px 起排，
+   于是整体右移了 22px —— 就是"看起来没居中"。正常流不依赖这种组合，更稳。
+   注意：这里不能用 padding-top 把文案往下推 —— 元素在 flex 居中下，
+   加 padding 会被居中重新平衡掉一半（实测加 140px 只下移了 68px）。
+   要真正的位移得用占位元素把整体重心挪下去。 */
+.ending-copy{
+  position:relative;z-index:2;text-align:center;
+  color:var(--cloud);text-shadow:0 2px 14px rgba(40,42,33,.55);
+}
+/* 占位块：把文案压到中偏下。那一带是山坡的暗色，白字更清楚，也更像"落款" */
+.ending-copy::before{content:"";display:block;height:140px}
+.ending-copy p{margin:0 0 12px;color:rgba(255,253,246,.82);font-size:9px;font-weight:700;letter-spacing:.24em}
+.ending-copy h2{margin:0 0 20px;font-family:var(--serif);font-size:27px;font-weight:900;line-height:1.45;letter-spacing:.06em}
+.ending-copy b{display:block;color:var(--cloud);font-family:var(--serif);font-size:25px;font-weight:900;letter-spacing:.12em}
+.ending-copy span{display:block;margin-top:10px;color:rgba(255,253,246,.85);font-size:11px;letter-spacing:.16em}
+
+footer{
+  position:relative;z-index:2;display:flex;flex-direction:column;align-items:center;gap:11px;
+  padding:34px 22px 96px;background:var(--cream);text-align:center;
+}
+footer img{width:min(58vw,230px);opacity:.9}
+footer p{margin:0;color:var(--ink-faint);font-size:9px;letter-spacing:.16em}
+
+/* ------------------------------------------------------------ 底部快捷导航 */
+.quick-nav{
+  position:fixed;z-index:20;left:50%;bottom:max(9px,env(safe-area-inset-bottom));
+  display:grid;grid-template-columns:repeat(4,1fr);
+  width:min(calc(100% - 84px),392px);
+  border:1px solid rgba(58,59,51,.2);border-radius:999px;
+  background:rgba(255,251,242,.9);box-shadow:var(--shadow);
+  transform:translateX(-50%);backdrop-filter:blur(9px);overflow:hidden;
+}
+.quick-nav a{
+  padding:11px 3px;color:var(--ink-soft);text-align:center;text-decoration:none;
+  font-size:10px;font-weight:900;letter-spacing:.06em;
+}
+.quick-nav a:active{background:rgba(232,166,87,.24)}
+.quick-nav a+a{border-left:1px solid rgba(58,59,51,.13)}
+
+/* ------------------------------------------------------------------ 音乐坞 */
+.music-dock{
+  position:fixed;z-index:30;right:max(10px,calc((100vw - 480px)/2 + 10px));
+  bottom:max(58px,calc(env(safe-area-inset-bottom) + 54px));
+}
+.music-dock>p{
+  position:absolute;right:52px;bottom:4px;width:max-content;max-width:190px;margin:0;padding:8px 11px;
+  border:1px solid rgba(58,59,51,.2);border-radius:10px;
+  color:var(--ink);background:rgba(255,251,242,.94);box-shadow:var(--shadow-soft);
+  font-size:9.5px;font-weight:700;line-height:1.5;transition:.3s ease;
+}
+.music-dock>p::after{
+  content:"";position:absolute;right:-7px;top:12px;
+  border-width:5px 0 5px 7px;border-style:solid;
+  border-color:transparent transparent transparent rgba(58,59,51,.2);
+}
+.music-dock>p.is-hidden{opacity:0;transform:translateY(8px);pointer-events:none}
+.music-dock>button{
+  display:grid;place-items:center;width:46px;height:46px;padding:0;
+  border:1px solid rgba(58,59,51,.26);border-radius:50%;
+  color:var(--ink);background:var(--paper);box-shadow:var(--shadow);cursor:pointer;font-size:18px;
+}
+.music-dock>button.playing{background:var(--sunset);animation:musicPulse 2.2s ease-in-out infinite}
+
+/* 旧版音乐播放器选择器（保留以免遗漏，当前页面未使用） */
+.music-player{display:none}
+.music-player>p{margin:3px 3px 7px;color:var(--ink-soft);font-size:9px}
+.music-player>a{display:block;padding:9px;border:1px solid rgba(58,59,51,.24);border-radius:10px;color:var(--ink);background:var(--cream);text-align:center;text-decoration:none;font-size:9px;font-weight:900}
+
+/* ------------------------------------------------------------------ 入场动效 */
+.reveal{opacity:0;transform:translateY(22px);transition:opacity .8s ease,transform .8s ease}
+.reveal.is-visible{opacity:1;transform:none}
+
+/* -------------------------------------------------------------------- 动画 */
+@keyframes drift{from{background-position:0 0}to{background-position:220px 0}}
+@keyframes float{
+  0%{transform:translateY(0) translateX(0);opacity:0}
+  12%{opacity:.7}
+  88%{opacity:.55}
+  100%{transform:translateY(-1020px) translateX(16px);opacity:0}
+}
+@keyframes glitter{0%,100%{opacity:.36}50%{opacity:.6}}
+@keyframes chime{0%{width:26px;height:26px;opacity:.95}100%{width:340px;height:340px;opacity:0}}
+@keyframes glide{
+  0%{transform:translateX(-46px) translateY(0) rotate(-4deg)}
+  25%{transform:translateX(26vw) translateY(-18px) rotate(3deg)}
+  50%{transform:translateX(52vw) translateY(12px) rotate(-3deg)}
+  75%{transform:translateX(78vw) translateY(-14px) rotate(4deg)}
+  100%{transform:translateX(112vw) translateY(6px) rotate(-4deg)}
+}
+@keyframes caught{0%{opacity:1;transform:scale(1) rotate(0)}100%{opacity:0;transform:scale(1.9) rotate(18deg)}}
+@keyframes blessing-pop{
+  0%{opacity:0;transform:translateY(14px) scale(.86) rotate(-1.6deg)}
+  14%,74%{opacity:1;transform:translateY(0) scale(1) rotate(-1.6deg)}
+  100%{opacity:0;transform:translateY(-22px) scale(1) rotate(-1.6deg)}
+}
+@keyframes arrow-float{0%,100%{transform:translateY(0)}50%{transform:translateY(6px)}}
+@keyframes mapPulse{0%{transform:scale(1);opacity:.85}100%{transform:scale(2.1);opacity:0}}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.3}}
+@keyframes musicPulse{0%,100%{transform:scale(1)}50%{transform:scale(1.07)}}
+@keyframes fade-in{from{opacity:0}to{opacity:1}}
+@keyframes deck-out{
+  0%{transform:translateY(0) scale(1)}
+  100%{transform:translateY(-30px) scale(1.06);opacity:0}
+}
+@keyframes breathe{0%,100%{transform:scale(1)}50%{transform:scale(1.035)}}
+@keyframes flip-in{
+  0%{transform:perspective(900px) rotateY(-92deg) scale(.92);opacity:.2}
+  100%{transform:perspective(900px) rotateY(0) scale(1);opacity:1}
+}
+
+/* 矮屏（老款手机横竖比更小）：收紧留白，保证卡片和三个按钮都在一屏里。
+   两点教训：
+   ① `.draw-stage` 的 min-height:260px 必须在这里抬掉 —— 但选择器要写 `#draw-layer .draw-stage`，
+      因为抽卡面板在 #draw-layer 里，普通的 `.draw-stage` 同权重下压不过它后面的规则。
+   ② 卡面是 9:16 的成品图，**不要给它加 max-height** —— 那会和 width 打架，
+      浏览器会按比例缩宽度，卡反而变小。这里只压留白 + 收窄卡宽即可。 */
+@media(max-height:720px){
+  .draw-panel{padding:12px 16px 12px}
+  .draw-title{margin-bottom:3px;font-size:15px}
+  .draw-sub{margin-bottom:8px}
+  #draw-layer .draw-stage{min-height:0;margin-bottom:10px}
+  .draw-card{width:min(64%,176px)}
+  .card-plate{margin-top:9px;font-size:9px}
+  .draw-actions{gap:7px}
+  .draw-actions button{padding:10px}
+  .draw-note{margin-top:6px}
+}
+
+/* ============================================================================
+   整屏节奏微调
+   ----------------------------------------------------------------------------
+   每章已由 .story-section 固定为至少一屏（100svh）。但各章内容量差别很大：
+   内容多的接近占满，内容少的只占半屏，屏内会留出大片空白，一章章看过去松紧不一。
+   这一块按「内容越少、元素放得越大」把短章节撑起来，让各屏的分量接近。
+   放在文件末尾，确保覆盖前面各章的基准值。
+   ============================================================================ */
+
+/* 一封信：这一屏内容最少（只有标题 + 一封信卡片），把字号和内边距放大撑起来。
+   注意用 #briefing 而不是 .briefing —— 这一节只有 id，没有同名 class。 */
+#briefing .section-title{margin-bottom:44px}
+#briefing .mission-card{padding:32px 26px 30px}
+#briefing .mission-card h3{margin:18px 0 13px;font-size:24px}
+#briefing .mission-card>p{font-size:13.5px;line-height:2.1;margin-bottom:15px}
+#briefing .mission-card dl div{padding:17px 0}
+#briefing .accept-button{margin-top:21px;padding:19px;font-size:13.5px}
+
+/* 风与纸鹤：这一屏只有「风铃图 + 提示 + 纸鹤场 + 提示」四块。
+   图放宽到出血（抵消内容区的 22px 内边距），并放大到 16:11 填满上半屏。 */
+.chime-section .exploration-frame{margin:0 -22px}
+.chime-section .exploration-frame>img{aspect-ratio:16/11;object-position:center 56%}
+.chime-section .scene-caption{margin-top:22px}
+.chime-section .scene-caption+.fish-field{height:212px;margin-top:22px}
+
+/* 风车邮局：放大相框与文字内边距 */
+.crew-section .crew-phone{padding:18px}
+.crew-section .crew-slide p{padding:40px 4px 28px}
+.crew-section .crew-controls{padding:30px 4px 2px}
+
+/* 旅人手账：场景图加高，行程单与倒计时拉开 */
+.schedule-section .restaurant-screen img{aspect-ratio:3/2}
+.schedule-section .menu-board{margin-top:24px;padding:20px 22px 12px}
+.schedule-section .countdown-card{margin-top:24px;padding:16px 16px}
+
+/* 往那盏灯的路：加高地图控制台与场地照间距 */
+.arrival .map-console{min-height:492px}
+.arrival .hotel-shot{margin-bottom:26px}
+
+/* 在旅人名册上落款：放大白色登记卡 */
+.rsvp-section .rsvp-phone{padding:60px 22px;min-height:452px}
+
+/* 带走一张：放大牌堆与按钮，让"抽一张"这一下有分量 */
+.draw-lead{margin-bottom:50px;font-size:13px}
+.draw-deck{height:212px;margin-bottom:52px}
+/* 牌背按 9:16 画（91×162），和真实卡面的比例一致，扇形才像同一副牌 */
+.draw-deck i{width:91px;height:162px;margin-left:-46px}
+.draw-deck i:nth-child(1){transform:rotate(-21deg) translateX(-55px)}
+.draw-deck i:nth-child(2){transform:rotate(-10deg) translateX(-28px)}
+.draw-deck i:nth-child(4){transform:rotate(10deg) translateX(28px)}
+.draw-deck i:nth-child(5){transform:rotate(21deg) translateX(55px)}
+.draw-open{padding:21px;font-size:14.5px}
+
+/* ------------------------------------------------------------ 窄屏与减弱动效 */
+@media(max-width:360px){
+  .mission-card dl div{grid-template-columns:50px 1fr}
+  .quick-nav a{font-size:9px}
+  .menu-board article{grid-template-columns:50px 1fr auto;gap:9px}
+}
+
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
+  .reveal{opacity:1;transform:none}
+  .pixel-fish{animation:none;left:50%;margin-left:-23px}
+  .bubble-field,.surface-glitter,.water-rays{display:none}
+}

@@ -1,0 +1,31 @@
+<!-- 由 tools/build-cranes.py 生成，请勿手改；改形状请改 assets/crane.svg 模板 -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64" role="img" aria-labelledby="ct cd">
+  <title id="ct">折纸鹤</title>
+  <desc id="cd">一张折纸折成的纸鹤，双翅向后方展开，长颈与尖喙朝右前方。</desc>
+  <defs>
+    <g id="crane-shape">
+      <!-- 远侧翅：衬在身体后面，压深一档 -->
+      <path d="M37 27 L15 11 L31 32 Z" fill="#8FAE6B" fill-opacity=".44"/>
+      <!-- 身体：尾端在左下，胸口朝右上 -->
+      <path d="M12 37 L37 27 L44 26 L26 43 Z" fill="#8FAE6B"/>
+      <!-- 长颈与头（含头部的方形折面） -->
+      <path d="M37 27 L44 26 L52 17.5 L57.5 14.5 L59 19 L51.5 23.5 L45 32 Z" fill="#8FAE6B"/>
+      <!-- 尖喙：与头之间留一条浅缝 -->
+      <path d="M56.5 15.5 L63.5 13 L53 22 Z" fill="#8FAE6B"/>
+      <!-- 尾羽：压在近翅之上 -->
+      <path d="M12 37 L26 43 L6 48 Z" fill="#8FAE6B"/>
+      <!-- 近侧翅：最前一层，最浅 -->
+      <path d="M39 28 L10 11 L31 45 Z" fill="#8FAE6B" fill-opacity=".72"/>
+      <!-- 折痕：细墨线，只画四条，多则显乱 -->
+      <g fill="none" stroke="rgba(58,59,51,.5)" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M12 37 L44 26 L37 27 Z"/>
+        <path d="M39 28.5 L19 17.5"/>
+        <path d="M37 27.5 L17 16.5"/>
+        <path d="M28 38 L31 45"/>
+      </g>
+    </g>
+  </defs>
+
+  <!-- 模板本体：颜色由 tools/build-cranes.py 注入，不直接引用此文件 -->
+  <use href="#crane-shape"/>
+</svg>

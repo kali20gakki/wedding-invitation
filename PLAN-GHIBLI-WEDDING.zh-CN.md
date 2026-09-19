@@ -395,6 +395,73 @@ generated-raw/
 
 先**只生成 B1 `hero-journey`**，用统一主模板反复出到满意。这一张定为**全站风格母本**。在写出满意的 B1 之前，不要生成其他任何图。
 
+> ✅ **母本已定稿**：`generated-raw/hero-journey-v5.png`（1024×1536）。
+> 配套产出：`generated-raw/hero-journey-wide-v1.png`（1536×1024，桌面档）、
+> `generated-raw/og-share-v1.png`（1200×630，由横版裁切，未过 API）。
+> **后续所有图一律以 v5 作为参考图走 `edits` 端点生成。**
+
+**⚠️ 已实测踩过的坑：这条弯路务必不要再走**
+
+风格不可能靠纯文字提示词描述出来。实测了 5 版才定稿，教训如下：
+
+| 版本 | 做法 | 结果 |
+| --- | --- | --- |
+| v1 | 只有风格词 + 统一风格段落 | 高细节、强体积感的当代动画背景，**不像吉卜力** |
+| v2a / v2b | 改成"平涂水粉、低饱和、低对比" | 方向反了：**发灰发闷**，失去参考图的高饱和与明快 |
+| v3 | **改用参考图 + `edits` 端点** | ✅ 风格对上了（高饱和宝蓝天空、明亮草地、成团云） |
+| v4 | 在 v3 上减细节：大色块草地、去野花、简化树丛 | ✅ 更柔和，但前景笔触仍偏碎、房屋细节偏多 |
+| **v5** | 三项微调：**前景笔触完全融掉 + 房屋大幅简化 + 加哑光颗粒** | ✅ **定稿** |
+
+**结论：风格传递必须靠参考图，不能靠文字。** 用户提供的风格参考图（本项目为《起风了》剧照 `起风了.jpg`）就是唯一可靠的风格锚。
+
+**✅ 定稿用的艺术指导段落（后续所有图都必须带上）**
+
+```text
+Match the reference image art style very closely: soft classic 2D hand-painted animation background.
+1) Foreground: paint as one broad smooth blended gradient with completely soft edges.
+   No visible brush strokes, no streaks, no grass texture.
+2) Buildings: greatly simplify. Each house reduced to a simple cream block with a simple roof shape
+   and one or two plain windows. No shutters, railings, chimneys, stone texture or small details.
+   Keep only the windmill and a small church tower as landmarks.
+3) Add a soft matte finish with a fine even paper grain and subtle matte dust layer over the whole image:
+   matte, slightly grainy, gently faded like old hand-painted animation cels on textured paper.
+   Slightly reduced contrast, soft hazy light, no glossy or digital clean smoothness.
+Clouds: very simple with soft blurred edges. Sky: gentle gradient of vivid cerulean blue.
+No photorealistic detail, no crisp sharp edges, no visible brush strokes in the foreground,
+no high-frequency texture, no architectural detail. No watermark, no signature, no text.
+```
+
+**✅ 定稿母本色卡（其他图对齐用）**
+
+| 元素 | 颜色 |
+| --- | --- |
+| 天空 | 高饱和宝蓝，柔和上下渐变 |
+| 草地 | 明亮春绿，大色块柔和推移 |
+| 云 | 浅灰白，边缘干净但柔 |
+| 建筑 | 米白墙 + 红陶瓦顶 |
+| 光线 | 暖调，对比适中，哑光颗粒 |
+
+**关键判据**：细节越少越像吉卜力。**草地不能有笔触、建筑不能有门窗细节、云不能有体积渲染**。
+
+**⚠️ 上传参考图时不要传原剧照，传母本**
+
+用户给的参考图是宫崎骏电影剧照，属受版权保护的作品。**该图仅用于本地理解风格与首次探测，不要上传到第三方 API。** 定稿后，风格锚全部改用自己生成、无版权争议的母本 `hero-journey-v5.png`。
+
+**其他已实测结论（本项目专用）**
+
+| 项目 | 结论 |
+| --- | --- |
+| 实际可用端点 | `https://code28.ccwu.cc/v1/images/generations`（纯文本）与 `https://code28.ccwu.cc/v1/images/edits`（传参考图） |
+| 实际可用模型 | `gpt-image-2`、`gpt-image-2.5-flare`、`gpt-image-2.5-sunburst` |
+| 支持参数 | `model`、`prompt`、`size`、`quality`、`style`、`n`、`response_format` |
+| `1024x1536` 竖版 | ✅ 实测可用 |
+| `1536x1024` 横版 | ✅ 实测可用 |
+| `quality` | 用 `high`（该接口 `standard` 为默认值，与本方案原假设的 `medium/high` 不同） |
+| 返回结构 | `response_format` 默认 `url`，返回**临时 URL**，需立即下载（不要依赖 URL 长期有效） |
+| ✅ `edits` 端点 | **实测支持传参考图**，`usage.input_tokens_details.image_tokens` 有值即为图已被接收。B10/B12 的婚纱照风格转换可直接走这个端点 |
+| 传图方式 | `curl -F 'image=@文件路径'`，multipart 表单 |
+| 参考图尺寸 | 参考图不必与输出同比例。用竖版母本可生成横版输出（v5 竖版 → 横版实测成功） |
+
 **第二重：以图锁风格**
 
 其余每一张图都把**母本作为第 2 张输入图**传入，并在提示词中明确要求：
@@ -411,6 +478,8 @@ match the reference image's art style, brushwork, palette and lighting exactly
 
 **统一风格段落（所有提示词都必须包含）**：
 
+> ⚠️ **这段原始风格段落已被实测淘汰**（它会导致"高细节、不像吉卜力"，见 §7.2 的踩坑记录）。**实际使用 §7.2 的"定稿艺术指导段落"**。以下保留仅为记录 v1 阶段的错误做法。
+
 ```text
 Studio Ghibli style, Hayao Miyazaki style hand-painted 2D animation background,
 soft watercolor and gouache texture, gentle pastel palette
@@ -425,7 +494,8 @@ no watermark, no signature
 ### 7.3 人脸保持的提示词写法（风格转换必带）
 
 ```text
-Based on this real wedding photo, convert it into the Ghibli hand-painted animation style described above.
+Based on this real wedding photo, convert it into the reference image's soft hand-painted
+animation style described above.
 Strictly preserve the two people's facial features, face shape, hairstyle, pose and relative position;
 keep the original composition and aspect ratio.
 Change only the art style, background and lighting.
@@ -433,15 +503,17 @@ Do not change the number or identity of people.
 No watermark, no signature, no text.
 ```
 
-**迭代节奏**：先用 `medium` 出 1 张试稿 → 确认脸像本人 → 用定稿参数批量出 `high` → 每张出 2~3 个候选挑 1 张。
+**迭代节奏**：先用 `quality=high` 出 1 张试稿 → 确认脸像本人 → 再批量出 → 每张出 2~3 个候选挑 1 张。
+（该代理的 `quality` 只有 `standard` / `high` 等预设，**用 `high`**。）
 
 ### 7.4 婚纱照风格转换（B12）执行细则
 
 1. 从 A1 的 8~12 张候选里选出最终 4 张（覆盖：1 张竖版合影 → 首页/结尾；1 张特写 → 角色位 1；2 张场景照 → 卡片与装饰）
-2. 每张先用 `medium` 出 2~3 个候选，交给项目所有者选
-3. 用选中的那张作为**组内色彩参考**，保证 4 张色调一致
-4. 定稿后统一 `high` 重出
-5. **构图保障**：首页是整屏背景，必须先定 `object-position` 焦点（建议 `center 38%`，锁住人物与小镇）再出竖版图，避免裁掉脸
+2. **走 `edits` 端点**（实测支持传参考图），把婚纱照与母本 `hero-journey-v5.png` 一起传入
+3. 每张先出 2~3 个候选，交给项目所有者选
+4. 用选中的那张作为**组内色彩参考**，保证 4 张色调一致
+5. **构图保障**：首页是整屏背景，必须先定 `object-position` 焦点再出竖版图。母本 v5 已定稿，实测建议起点为 **`object-position: center 62%`**（母本下半部是柔和绿坡，把小镇、风车、火车提到画面中上部，下半部留给 logo / 姓名 / 日期 / 按钮叠字）；接页面时在 375/390/430 三档实测微调，目标是不让叠字压在房屋与风车细节上
+6. ⚠️ 婚纱照是个人隐私素材，属第三方 API 上传，**提前告知项目所有者数据流向**；不上传含长辈/儿童的片子
 
 ### 7.5 输出整理与入库纪律
 
@@ -945,9 +1017,28 @@ dave      DAVE      蓝洞      BLUE HOLE
 
 ## 15. 附：可直接复制的生成提示词模板
 
-> 以下模板已包含 §7.2 的统一风格段落。**每张图都要把母本（B1）作为第 2 张输入图传入。**
+> 以下模板已包含 §7.2 的统一风格段落。**每张图都要把母本 `generated-raw/hero-journey-v5.png` 作为输入图传入（走 `edits` 端点）。**
+>
+> ⚠️ **不要沿用 §15.1 的旧模板生成新图**——它是 v1 阶段的产物，已被实测证明会导致"高细节、不像吉卜力"。**B1 已定稿，不需要再生成。**
 
-### 15.1 B1 首页主视觉（母本，最先做）
+### 15.1 B1 首页主视觉（母本）— ✅ 已完成，仅供参考，不要再生成
+
+最终定稿命令形态：
+
+```bash
+curl -X POST 'https://code28.ccwu.cc/v1/images/edits' \
+  -H "Authorization: Bearer $KEY" \
+  -F 'model=gpt-image-2' \
+  -F 'size=1024x1536' \
+  -F 'quality=high' \
+  -F 'n=1' \
+  -F 'image=@起风了.jpg' \
+  -F "prompt=<§7.2 的定稿艺术指导段落 + 画面内容描述>"
+```
+
+产出：`generated-raw/hero-journey-v5.png`（竖版母本）、`hero-journey-wide-v1.png`（横版）、`og-share-v1.png`（1200×630）。
+
+> **已废弃的旧模板（v1 阶段，实测不像吉卜力，不要再用）**：
 
 ```text
 A peaceful hillside town viewed from above, an old steam train winding along a cliffside railway,

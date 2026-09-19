@@ -2,3 +2,14 @@
 .dev.vars
 .env
 node_modules/
+
+# 原始婚纱照、风格参考图与 AI 生成中间产物（不得入库）
+raw-photos/
+generated-raw/
+起风了.jpg
+起风了人物.webp
+*.psd
+*.tif
+
+# 新人提供的抽卡原图（成品卡 WebP 已转好放在 assets/cards/，原始 PNG 不入库）
+抽卡图片/

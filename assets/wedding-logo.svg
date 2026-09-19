@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 224" role="img" aria-labelledby="t d">
+  <title id="t">张伟与李旭雨的婚礼</title>
+  <desc id="d">手绘风格婚礼标识：藤蔓与风纹装饰，含新人姓名与婚期。</desc>
+  <g fill="none" stroke="#6E9153" stroke-width="3" stroke-linecap="round">
+    <path d="M42 182c44-14 70-38 86-70 9-18 12-36 10-52" />
+    <path d="M92 162c-14-6-22-18-22-31M118 126c-15-2-25-12-28-24M146 82c-13 3-24-2-30-14" />
+    <path d="M558 182c-44-14-70-38-86-70-9-18-12-36-10-52" />
+    <path d="M508 162c14-6 22-18 22-31M482 126c15-2 25-12 28-24M454 82c13 3 24-2 30-14" />
+  </g>
+  <g fill="none" stroke="#D08A3E" stroke-width="2.4" stroke-linecap="round">
+    <path d="M196 52c24 0 39 12 39 12s15-12 39-12" />
+    <path d="M196 52c-8 0-14 5-14 5s6 5 14 5M274 52c8 0 14 5 14 5s-6 5-14 5" />
+    <path d="M326 52c24 0 39 12 39 12s15-12 39-12" />
+    <path d="M326 52c-8 0-14 5-14 5s6 5 14 5M404 52c8 0 14 5 14 5s-6 5-14 5" />
+    <path d="M262 34c9-10 22-14 33-9M338 34c-9-10-22-14-33-9" />
+  </g>
+  <g font-family="Songti SC, Noto Serif SC, Georgia, serif" text-anchor="middle">
+    <text x="300" y="132" font-size="46" font-weight="900" fill="#3A3B33" letter-spacing="6">张伟 &amp; 李旭雨</text>
+    <text x="300" y="176" font-size="21" font-weight="700" fill="#D08A3E" letter-spacing="8">2026.10.02</text>
+  </g>
+</svg>

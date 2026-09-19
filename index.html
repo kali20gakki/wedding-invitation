@@ -3,126 +3,206 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-    <meta name="theme-color" content="#041a33" />
-    <meta name="description" content="蓝洞特别委托：一份潜水冒险主题的互动婚礼邀请函公开演示。" />
+    <meta name="theme-color" content="#F7F0E1" />
+    <meta name="description" content="张伟与李旭雨的婚礼邀请函：2026年10月2日，云南省罗平县金花玉湖酒店。收下这封信，循着风铃与纸鹤，来赴我们的约。" />
     <meta property="og:type" content="website" />
-    <meta property="og:title" content="BLUE HOLE WEDDING｜互动婚礼请柬 Demo" />
-    <meta property="og:description" content="潜入蓝洞，接受一场关于爱与相聚的特别委托。" />
-    <meta property="og:url" content="https://blue-hole-wedding-invitation-demo.pages.dev/" />
-    <meta property="og:image" content="https://mastrena.github.io/dave-diver-wedding-invitation/assets/wedding-invitation-logo.png" />
-    <meta property="og:image:alt" content="WEDDING INVITATION" />
+    <meta property="og:title" content="张伟 &amp; 李旭雨 · 婚礼邀请函" />
+    <meta property="og:description" content="2026年10月2日 · 云南省罗平县金花玉湖酒店。风起时，请来赴约。" />
+    <meta property="og:url" content="https://example.github.io/wedding-invitation/" />
+    <meta property="og:image" content="https://example.github.io/wedding-invitation/assets/og-share.webp" />
+    <meta property="og:image:alt" content="山谷小镇与驶过山崖的蒸汽火车" />
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="BLUE HOLE WEDDING｜互动婚礼请柬 Demo" />
-    <meta name="twitter:description" content="潜入蓝洞，接受一场关于爱与相聚的特别委托。" />
-    <meta name="twitter:image" content="https://mastrena.github.io/dave-diver-wedding-invitation/assets/wedding-invitation-logo.png" />
-    <title>BLUE HOLE WEDDING｜互动婚礼请柬 Demo</title>
-    <link rel="canonical" href="https://blue-hole-wedding-invitation-demo.pages.dev/" />
-    <link rel="icon" type="image/png" href="./assets/wedding-invitation-logo.png" />
+    <meta name="twitter:title" content="张伟 &amp; 李旭雨 · 婚礼邀请函" />
+    <meta name="twitter:description" content="2026年10月2日 · 云南省罗平县金花玉湖酒店。风起时，请来赴约。" />
+    <meta name="twitter:image" content="https://example.github.io/wedding-invitation/assets/og-share.webp" />
+    <title>张伟 &amp; 李旭雨 · 婚礼邀请函</title>
+    <link rel="canonical" href="https://example.github.io/wedding-invitation/" />
+    <link rel="icon" type="image/svg+xml" href="./assets/wedding-logo.svg" />
     <link rel="stylesheet" href="./style.css" />
     <script type="module" src="./app.js"></script>
   </head>
   <body>
     <main class="phone-shell">
+      <!-- ============================================================ 启程 -->
       <section class="hero" id="top">
-        <img class="hero-art" src="./assets/dave-key-art-clean.png" alt="蓝洞海面场景" />
-        <div class="hero-shade"></div><div class="surface-glitter" aria-hidden="true"></div>
-        <div class="hero-hud"><span>BLUE HOLE</span><b>2030.10.01</b><span>MISSION 01</span></div>
-        <div class="hero-brand"><img src="./assets/wedding-invitation-logo.png" alt="WEDDING INVITATION" /></div>
-        <div class="hero-copy">
-          <p class="mission-code">SPECIAL WEDDING MISSION</p>
-          <img class="hero-names" src="./assets/demo-wedding-names.svg" alt="新郎与新娘，Groom 与 Bride" />
-          <div class="mission-ticket"><span>DATE</span><b>2030年10月1日 · 星期二</b><span>PLACE</span><b class="hero-venue">示例市蓝湾婚礼中心·深海厅</b></div>
+        <img class="hero-art" src="./assets/hero-couple.webp" alt="张伟与李旭雨站在夏日的青草坡上，远处有风车、小镇与驶过的蒸汽火车" />
+        <div class="hero-shade"></div>
+        <div class="surface-glitter" aria-hidden="true"></div>
+        <div class="hero-hud"><span>A JOURNEY OF WIND</span><span>2026.10.02</span></div>
+
+        <p class="hero-kicker"><span>WEDDING</span><i>·</i><span>INVITATION</span></p>
+
+        <div class="hero-meet">
+          <img class="hero-names" src="./assets/text/text-names.webp" alt="张伟 与 李旭雨" />
+          <!-- 原来这里是「2026.10.02」，但顶部状态条已有日期、下面场地卡也再写一遍，三处重复。
+               改成一句邀请语（v3 重新生成的「婚礼邀请」四字，笔迹与姓名同一套）。 -->
+          <img class="hero-invite" src="./assets/text/text-invite.webp" alt="婚礼邀请" />
         </div>
-        <button class="dive-button" id="start-mission" type="button"><span>接受委托，开始下潜</span><b>▶</b></button>
-        <p class="start-note">建议开启声音体验 · 点击后播放官方 OST</p>
+
+        <div class="hero-actions">
+          <button class="dive-button" id="start-mission" type="button"><span>收下这封信，出发</span><b>▶</b></button>
+          <p class="start-note">建议开启声音 · 点击后播放风与钢琴</p>
+        </div>
       </section>
 
+      <!-- ==================================================== 风的刻度 HUD -->
       <div class="game-hud" aria-hidden="true">
-        <div class="depth"><small>DEPTH</small><b id="depth-value">0</b><span>M</span></div>
-        <div class="oxygen"><span>O₂</span><i><b id="oxygen-fill"></b></i></div>
-        <div class="caught"><span>🐟</span><b id="fish-count">0</b><small>/ 5</small></div>
+        <div class="depth"><small>WIND</small><b id="depth-value">0</b><span>风</span></div>
+        <div class="oxygen"><span>云</span><i><b id="oxygen-fill"></b></i></div>
+        <div class="caught"><span>🕊</span><b id="fish-count">0</b><small>/ 5</small></div>
       </div>
 
+      <!-- ============================================================ 一封信 -->
       <section class="underwater story-section" id="briefing">
-        <div class="water-rays" aria-hidden="true"></div><div class="bubble-field" aria-hidden="true"></div>
-        <header class="section-title reveal"><span>!</span><div><p>NEW MISSION RECEIVED</p><h2>蓝洞特别委托</h2></div></header>
+        <div class="water-rays" aria-hidden="true"></div>
+        <div class="bubble-field" aria-hidden="true"></div>
+        <header class="section-title reveal"><span>01</span><div><p>A LETTER ARRIVED</p><h2>一封信</h2></div></header>
         <article class="mission-card reveal">
-          <div class="card-top"><span>WEDDING QUEST</span><b id="quest-status">WAITING</b></div>
-          <h3>一生一次的深海任务</h3>
-          <p>从今日起，我们决定成为彼此漫长航程里最坚定的潜伴。诚邀你在这一日来到岸边，与我们一同见证这次满载爱意的启航。</p>
-          <dl><div><dt>DATE</dt><dd>2030年10月1日 · 星期二</dd></div><div><dt>PLACE</dt><dd class="venue-one-line">示例市蓝湾婚礼中心·深海厅</dd></div><div><dt>CREW</dt><dd>新郎 & 新娘</dd></div></dl>
-          <button class="accept-button" id="accept-quest" type="button">长按接受委托</button><div class="hold-progress" aria-hidden="true"><i></i></div>
+          <div class="card-top"><span>WEDDING LETTER</span><b id="quest-status">WAITING</b></div>
+          <h3>致我们最好的朋友</h3>
+          <p>窗外起了风，我们把想说的话写进了这封信。从今日起，我们决定成为彼此漫长旅途里最坚定的同路人。诚邀你在那一天来到罗平，与我们一同见证启程。</p>
+          <dl>
+            <div><dt>DATE</dt><dd>2026年10月2日 · 星期五</dd></div>
+            <div><dt>PLACE</dt><dd class="venue-one-line">云南省罗平县金花玉湖酒店</dd></div>
+            <div><dt>CREW</dt><dd>张伟 &amp; 李旭雨</dd></div>
+          </dl>
+          <button class="accept-button" id="accept-quest" type="button">长按接下这封信</button>
+          <div class="hold-progress" aria-hidden="true"><i></i></div>
         </article>
-        <div class="mission-complete" id="mission-complete" role="status" aria-live="polite"><b>MISSION ACCEPTED</b><span>赴约任务已加入清单</span></div>
+        <div class="mission-complete" id="mission-complete" role="status" aria-live="polite"><b>LETTER OPENED</b><span>你的名字已写进我们的名册</span></div>
+      </section>
+
+      <!-- ======================================================== 风与纸鹤 -->
+      <!-- 原属 01，与「一封信」挤在同一屏（实测 1234px / 1.46 屏）。拆成独立一章，
+           每章独占一屏后，风铃与纸鹤也有了自己的位置。 -->
+      <section class="chime-section story-section" id="chime">
+        <header class="section-title reveal"><span>02</span><div><p>THE WIND BRINGS WORDS</p><h2>风与纸鹤</h2></div></header>
         <div class="exploration-frame reveal">
-          <img src="./assets/sea-exploration.webp" alt="潜水员戴夫海底探索动画" /><div class="camera-corners" aria-hidden="true"></div>
-          <button class="sonar-button" id="sonar-button" type="button" aria-label="释放声呐">SONAR</button><div class="sonar-field" aria-hidden="true"></div>
+          <img src="./assets/scene-chime.webp" alt="老屋檐下挂着风铃，长椅旁有石板小路" />
+          <div class="camera-corners" aria-hidden="true"></div>
+          <button class="sonar-button" id="sonar-button" type="button" aria-label="摇响风铃"><span>CHIME</span></button>
+          <div class="sonar-field" aria-hidden="true"></div>
         </div>
-        <p class="scene-caption reveal fish-caption">点击海里的鱼试试看 <b class="fish-arrow" aria-hidden="true">↓</b><small>随机收取祝福</small></p><div class="fish-field" id="fish-field" aria-label="可以捕捉的像素鱼"></div>
+        <p class="scene-caption reveal fish-caption">点一点风铃 <b class="fish-arrow" aria-hidden="true">↓</b></p>
+        <div class="fish-field" id="fish-field" aria-label="可以接住的纸鹤"></div>
+        <p class="scene-caption reveal fish-caption">接住纸鹤</p>
       </section>
 
+      <!-- ====================================================== 风车邮局来信 -->
       <section class="crew-section story-section" id="crew">
-        <header class="section-title reveal"><span>02</span><div><p>CREW COMMUNICATION</p><h2>蓝洞小队来电</h2></div></header>
+        <header class="section-title reveal"><span>03</span><div><p>WINDMILL POST · PHOTO LETTERS</p><h2>风车邮局来信</h2></div></header>
         <div class="crew-phone reveal">
-          <div class="phone-top"><span>iDIVER</span><b>INCOMING CALL</b></div>
+          <div class="phone-top"><span>WINDMILL POST</span><b>LETTERS</b></div>
           <div class="crew-slides" id="crew-slides">
-            <article class="crew-slide is-active" data-name="DAVE"><img src="./assets/dave-character.webp" alt="潜水员戴夫角色介绍" /><p><b>DAVE</b>“听说这次不是普通下潜，而是一场婚礼！放心，我一定准时把祝福送到。”</p></article>
-            <article class="crew-slide" data-name="BANCHO"><img src="./assets/bancho.webp" alt="班乔角色介绍" /><p><b>BANCHO</b>“真正重要的日子，值得一席认真准备的料理。今日菜单：幸福，无限供应。”</p></article>
-            <article class="crew-slide" data-name="COBRA"><img src="./assets/cobra.webp" alt="柯布拉角色介绍" /><p><b>COBRA</b>“船已备好，坐标已确认。10月1日，我们在深海厅集合！”</p></article>
-            <article class="crew-slide" data-name="BACON"><img src="./assets/bacon.webp" alt="培根博士角色介绍" /><p><b>DR. BACON</b>“根据我的研究，这将是蓝洞幸福指数最高的一天。请务必亲自参与观察。”</p></article>
+            <article class="crew-slide is-active"><img src="./assets/couple-arch.webp" alt="张伟与李旭雨在蓝天白云下，新郎将戒指递给新娘" /><p>那一天风很轻，云很白，我们决定把名字写在一起。</p></article>
+            <article class="crew-slide"><img src="./assets/couple-umbrella.webp" alt="两人撑着透明雨伞，在绿荫下相望" /><p>下过雨的路口，两把透明伞，恰好够遮住我们俩。</p></article>
+            <article class="crew-slide"><img src="./assets/couple-door.webp" alt="两人在木门前交换戒指" /><p>木门上的光一点点挪过来，落在我们握着的手上。</p></article>
           </div>
-          <div class="crew-controls"><button type="button" data-crew="prev" aria-label="上一位小队成员">◀</button><output id="crew-name">DAVE · 1/4</output><button type="button" data-crew="next" aria-label="下一位小队成员">▶</button></div>
+          <div class="crew-controls">
+            <button type="button" data-crew="prev" aria-label="上一张">◀</button>
+            <output id="crew-name">1 / 3</output>
+            <button type="button" data-crew="next" aria-label="下一张">▶</button>
+          </div>
         </div>
       </section>
 
+      <!-- ========================================================== 旅人手账 -->
       <section class="schedule-section story-section" id="schedule">
-        <header class="section-title light reveal"><span>03</span><div><p>BANCHO SUSHI · TODAY'S SPECIAL</p><h2>婚礼当日菜单</h2></div></header>
-        <div class="restaurant-screen reveal"><img src="./assets/sushi-service.webp" alt="班乔寿司店营业动画" /><div class="restaurant-status"><i></i><span>OPEN FOR WEDDING</span></div></div>
+        <header class="section-title reveal"><span>04</span><div><p>TRAVELER'S NOTEBOOK · TODAY</p><h2>旅人手账</h2></div></header>
+        <div class="restaurant-screen reveal">
+          <img src="./assets/scene-window.webp" alt="老街木窗，窗台上摆着面包篮与陶杯" />
+          <div class="restaurant-status"><i></i><span>OPEN FOR GUESTS</span></div>
+        </div>
         <div class="menu-board reveal">
-          <p class="board-title">TODAY'S SPECIAL COURSE</p>
-          <article><time>10:30</time><div><b>海面集合</b><span>迎宾 · 合影 · 与新人会合</span></div><strong>★</strong></article>
-          <article><time>11:58</time><div><b>限定主菜</b><span>婚礼仪式 · 交换戒指 · 午宴</span></div><strong>★★★</strong></article>
+          <p class="board-title">当 日 行 程 · TODAY</p>
+          <article><time>11:30</time><div><b>午宴</b><span>金花玉湖酒店 · 入席开宴</span></div><strong>❀❀</strong></article>
+          <article><time>14:00</time><div><b>草坪婚礼</b><span>交换戒指 · 答谢 · 合影</span></div><strong>❀❀❀</strong></article>
           <div class="menu-total"><span>LOVE POINT</span><b>MAX</b></div>
         </div>
-        <div class="countdown-card reveal"><span>NEXT DIVE IN</span><b id="days-count">--</b><small>DAYS</small></div>
+        <div class="countdown-card reveal"><span>距启程还有</span><b id="days-count">--</b><small>天</small></div>
       </section>
 
+      <!-- ========================================================== 手绘地图 -->
       <section class="arrival story-section" id="arrival">
-        <header class="section-title reveal"><span>04</span><div><p>NAVIGATION · MEETING POINT</p><h2>返回海面集合</h2></div></header>
+        <header class="section-title reveal"><span>05</span><div><p>MAP · MEETING POINT</p><h2>往那盏灯的路</h2></div></header>
         <article class="map-console reveal">
-          <div class="map-grid" aria-hidden="true"></div><div class="map-pulse" aria-hidden="true"><i></i><b>♥</b></div>
-          <p class="coordinate">DEMO COORDINATE</p><h3>示例市 蓝湾婚礼中心 深海厅</h3><p>本页面为公开演示，实际使用时请替换为你的交通信息</p>
-          <a href="https://ditu.amap.com/" target="_blank" rel="noopener noreferrer">打开高德地图 <span>↗</span></a>
+          <div class="map-grid" aria-hidden="true"></div>
+          <div class="map-pulse" aria-hidden="true"><i></i><b>⚑</b></div>
+          <p class="coordinate">MEETING POINT</p>
+          <h3>云南省罗平县金花玉湖酒店</h3>
+          <p>11:30 午宴，14:00 草坪婚礼，两场都在酒店内。点开地图跟着导航走即可。</p>
+          <figure class="hotel-shot">
+            <img src="./assets/scene-hotel.webp" alt="金花玉湖酒店：环形绿植阳台的穹顶主楼，前方两座白色圆顶馆" />
+            <figcaption>婚礼场地 · 金花玉湖酒店</figcaption>
+          </figure>
+          <a href="https://surl.amap.com/gjQT5wW87AR" target="_blank" rel="noopener noreferrer">打开高德地图导航 <span>↗</span></a>
         </article>
       </section>
 
+      <!-- ========================================================== 旅人名册 -->
       <section class="rsvp-section story-section" id="rsvp">
-        <header class="section-title reveal"><span>05</span><div><p>IDIVER APP · GUEST REGISTRATION</p><h2>登记潜水小队</h2></div></header>
+        <header class="section-title reveal"><span>06</span><div><p>TRAVELER'S NOTEBOOK · GUEST LIST</p><h2>在旅人名册上落款</h2></div></header>
         <div class="rsvp-phone reveal">
-          <div class="app-bar"><span>◉</span><b>WEDDING MISSION</b><small>LOCAL DEMO</small></div>
+          <div class="app-bar"><span>◉</span><b>TRAVELER'S NOTEBOOK</b><small>LOCAL DEMO</small></div>
           <form id="rsvp-form" novalidate>
-            <p class="demo-notice">DEMO MODE · 登记内容只保存在当前浏览器，不会上传到服务器</p>
+            <p class="demo-notice">您的登记信息将通过飞书问卷提交，并保存在新人维护的飞书表格中，仅用于本次婚礼的安排。</p>
             <label><span>宾客姓名 <b>*</b></span><input name="guestName" maxlength="30" autocomplete="name" required placeholder="请输入姓名" /></label>
             <label><span>出席人数 <b>*</b></span><select name="partySize"><option value="1">1 人</option><option value="2">2 人</option><option value="3">3 人</option><option value="4">4 人</option><option value="5">5 人</option><option value="6">6 人</option></select></label>
             <fieldset id="accommodation-field"><legend>是否需要住宿 <b>*</b></legend><div class="choice-row"><label><input type="radio" name="needsAccommodation" value="no" checked /><span>不需要</span></label><label><input type="radio" name="needsAccommodation" value="yes" /><span>需要住宿</span></label></div></fieldset>
-            <div class="date-fields" id="accommodation-dates" hidden><label><span>入住时间</span><input type="datetime-local" name="checkInAt" value="2030-09-30T14:00" /></label><label><span>退房时间</span><input type="datetime-local" name="checkOutAt" value="2030-10-01T12:00" /></label></div>
+            <div class="date-fields" id="accommodation-dates" hidden><label><span>入住时间</span><input type="datetime-local" name="checkInAt" value="2026-10-01T14:00" /></label><label><span>退房时间</span><input type="datetime-local" name="checkOutAt" value="2026-10-03T12:00" /></label></div>
             <label><span>联系电话</span><input name="phone" maxlength="20" inputmode="tel" autocomplete="tel" placeholder="方便新人联系（选填）" /></label>
-            <label><span>发送给新人的声呐留言</span><textarea name="message" maxlength="200" rows="4" placeholder="写一句祝福吧（选填）"></textarea><small><output id="message-count">0</output>/200</small></label>
-            <p class="form-error" id="rsvp-error" role="alert" hidden></p><button class="submit-button" type="submit"><span>保存赴约信息</span><b>▶</b></button>
+            <label><span>写在纸背上的话</span><textarea name="message" maxlength="200" rows="4" placeholder="写一句祝福吧（选填）"></textarea><small><output id="message-count">0</output>/200</small></label>
+            <p class="form-error" id="rsvp-error" role="alert" hidden></p>
+            <button class="submit-button" type="submit"><span>保存赴约信息</span><b>▶</b></button>
           </form>
           <div class="rsvp-success" id="rsvp-success" tabindex="-1" hidden><div class="success-radar"><i></i><b>✓</b></div><h3 id="rsvp-success-title">登记成功</h3><p id="rsvp-success-summary"></p><button id="rsvp-edit" type="button">修改登记信息</button></div>
-          <div class="rsvp-external" id="rsvp-external" hidden><div class="success-radar"><i></i><b>↗</b></div><h3>宾客登记已开启</h3><p>点击下方按钮填写赴约信息。提交后，新人可以在表单后台统一查看和导出名单。</p><a id="rsvp-external-link" href="#" target="_blank" rel="noopener noreferrer">填写赴约信息 <span>↗</span></a></div>
+          <div class="rsvp-external" id="rsvp-external" hidden><div class="success-radar"><i></i><b>↗</b></div><h3>名册已备好</h3><p>点击下方按钮填写赴约信息。填完后请回到这一页，抽一张属于你的邀请函。</p><a id="rsvp-external-link" href="#" target="_blank" rel="noopener noreferrer">填写赴约信息 <span>↗</span></a></div>
         </div>
       </section>
 
-      <section class="ending story-section"><img src="./assets/dave-dive.webp" alt="蓝洞海底场景" /><div class="ending-copy reveal"><p>MISSION DESTINATION</p><h2>在深蓝里相遇<br />在余生里同行</h2><b>新郎&新娘</b><span>2030.10.01 · 等你赴约</span></div></section>
-      <footer><img src="./assets/wedding-invitation-logo.png" alt="WEDDING INVITATION" /><p>UNOFFICIAL FAN-MADE WEDDING INVITATION DEMO</p></footer>
+      <!-- ============================================================ 抽卡 -->
+      <section class="draw-section story-section" id="draw">
+        <header class="section-title reveal"><span>07</span><div><p>TAKE ONE WITH YOU</p><h2>带走一张</h2></div></header>
+        <!-- 标题按前五章左对齐，牌堆与按钮在下方单独居中成一列 -->
+        <div class="draw-stage-area">
+          <p class="draw-lead reveal">信读完了，路也认清了。抽一张属于你的邀请函，留好截图，草坪婚礼环节要用它做游戏。</p>
+          <div class="draw-deck reveal" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
+          <button class="draw-open reveal" id="draw-open" type="button"><span>抽一张邀请函</span><b>✦</b></button>
+        </div>
+      </section>
+
+      <div class="draw-layer" id="draw-layer" hidden>
+        <div class="draw-panel" role="dialog" aria-modal="true" aria-labelledby="draw-title">
+          <h3 class="draw-title" id="draw-title">风把你的那一张吹来了</h3>
+          <p class="draw-sub">A CARD FOR YOU</p>
+          <div class="draw-stage" id="draw-stage">
+            <button class="draw-back" id="draw-back" type="button" aria-label="翻开卡片">鹤</button>
+          </div>
+          <div class="draw-actions" id="draw-actions">
+            <button class="primary" id="draw-save" type="button" hidden>保存到相册</button>
+            <button id="draw-again" type="button">再抽一张</button>
+            <button id="draw-close" type="button">关闭</button>
+          </div>
+          <p class="draw-note" id="draw-note" hidden>提示：在手机上长按图片即可保存到相册。</p>
+        </div>
+      </div>
+
+      <!-- ============================================================ 结尾 -->
+      <section class="ending story-section">
+        <img src="./assets/scene-ending.webp" alt="夕阳下起伏的草坡，山丘上有一栋小屋" />
+        <div class="ending-copy reveal">
+          <p>THE WIND REMEMBERS</p>
+          <h2>风会记得<br />我们的名字</h2>
+          <b>张伟&李旭雨</b><span>2026.10.02 · 等你赴约</span>
+        </div>
+      </section>
+      <footer><img src="./assets/wedding-logo.svg" alt="张伟与李旭雨的婚礼" /><p>A JOURNEY OF WIND · WEDDING INVITATION</p></footer>
     </main>
 
-    <nav class="quick-nav" aria-label="快捷导航"><a href="#briefing">任务</a><a href="#schedule">日程</a><a href="#arrival">地图</a><a href="#rsvp">登记</a></nav>
+    <nav class="quick-nav" aria-label="快捷导航"><a href="#briefing">来信</a><a href="#crew">邮局</a><a href="#schedule">日程</a><a href="#arrival">地图</a></nav>
     <div class="music-dock">
-      <audio id="official-bgm" preload="metadata" loop playsinline src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/81/7c/fc/817cfcb4-e07a-c9ee-21cc-2fe61ff00906/mzaf_12705664676681936623.plus.aac.p.m4a"></audio>
-      <p id="music-hint">点击播放/关闭官方音乐</p><button id="music-toggle" type="button" aria-pressed="false" aria-label="播放官方背景音乐"><span>♫</span></button>
+      <audio id="official-bgm" preload="metadata" loop playsinline src="./assets/wedding-bgm.mp3"></audio>
+      <p id="music-hint">点击播放：风与钢琴</p><button id="music-toggle" type="button" aria-pressed="false" aria-label="播放背景音乐"><span>♪</span></button>
     </div>
   </body>
 </html>
