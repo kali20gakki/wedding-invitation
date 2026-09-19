@@ -1,0 +1,54 @@
+# 把站点发布到 GitHub Pages。
+#
+# 背景：仓库 Settings → Pages 里如果选 "Deploy from a branch"，就需要在仓库里
+# 存一份构建产物；而这个站点是零构建的静态站（HTML + CSS + 原生 JS），
+# 根目录本身就是产物，用 Actions 发布更干净，也避免把产物再提交一遍。
+#
+# 启用步骤（只需一次，在 GitHub 网页上点）：
+#   仓库 → Settings → Pages → Build and deployment → Source 选 "GitHub Actions"
+# 之后每次 push 到 main 都会自动重新发布。
+name: Deploy static site to Pages
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# 同时只跑一个发布，新的推送取消排队中的旧任务，但不打断正在进行的发布
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Configure Pages
+        uses: actions/configure-pages@v5
+
+      # 只发布站点本身，不要把 tools/、各类 .md 文档、部署说明一起发到公网
+      - name: Stage site files
+        run: |
+          mkdir -p _site
+          cp index.html style.css app.js .nojekyll _site/
+          cp -r assets _site/assets
+
+      - name: Upload site
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: '_site'
+
+      - name: Deploy
+        id: deployment
+        uses: actions/deploy-pages@v4
