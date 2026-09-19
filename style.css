@@ -596,16 +596,24 @@ body::before{
 .arrival .section-title h2{color:var(--ink)}
 .arrival .section-title>span{background:rgba(255,251,242,.9)}
 
+/* 注意：这里不能加 overflow:hidden。
+   地图定位徽记（.map-pulse）是刻意"骑"在卡片上边缘的，用 margin:-22px 往上顶出一半；
+   一旦在卡片上做裁剪，徽记的上半部分和里面的小旗子就会被切掉（实测被切 21px、旗子缺 7px）。
+   需要裁剪的只有上方那块地图底图，交给 .map-grid 自己做。 */
 .map-console{
-  position:relative;z-index:2;min-height:340px;padding:0 0 20px;overflow:hidden;
+  position:relative;z-index:2;min-height:340px;padding:0 0 20px;
   border:1px solid rgba(58,59,51,.22);border-radius:16px;
   background:var(--kraft);box-shadow:var(--shadow);
 }
 .map-console::before{
-  content:"";position:absolute;inset:0;pointer-events:none;
+  content:"";position:absolute;inset:0;border-radius:16px;pointer-events:none;
   background-image:var(--grain);opacity:.24;mix-blend-mode:multiply;
 }
-.map-grid{position:absolute;top:0;left:0;right:0;height:190px;overflow:hidden}
+/* 地图底图的裁剪放在这里：圆角要跟卡片内侧对齐（16px 外圆角 − 1px 边框） */
+.map-grid{
+  position:absolute;top:0;left:0;right:0;height:190px;overflow:hidden;
+  border-radius:15px 15px 0 0;
+}
 .map-grid::before{
   content:"";position:absolute;inset:0;
   background-image:url("../assets/scene-map.webp");
