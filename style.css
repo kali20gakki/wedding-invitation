@@ -446,9 +446,14 @@ body::before{
 }
 .pixel-fish.caught{animation:caught .6s ease-in forwards;pointer-events:none}
 
-/* 祝福纸条（原卡通气泡）：与风铃祝福共用「纸片」语言，只有折角不同 */
+/* 祝福纸条（原卡通气泡）：与风铃祝福共用「纸片」语言，只有折角不同。
+   宽度固定成 border-box 的 154px：JS 要先量出纸条尺寸才能把它正对纸鹤居中，
+   width:max-content + max-width 会让宽度随文字变化、难以居中。
+   宽度越窄，靠边的纸鹤也能被正对着居中。 */
 .fish-blessing{
-  position:absolute;z-index:6;max-width:180px;margin:0;padding:9px 13px;
+  position:absolute;z-index:6;
+  box-sizing:border-box;width:154px;max-width:calc(100% - 12px);
+  margin:0;padding:9px 12px;
   border:0;border-radius:3px 10px 3px 10px;
   color:var(--ink);background:var(--paper);
   box-shadow:0 5px 12px rgba(58,59,51,.22);
@@ -456,14 +461,13 @@ body::before{
   transform:rotate(-1.6deg);pointer-events:none;
   animation:blessing-pop 2.6s ease both;
 }
-/* 折角：纸片被风吹起的一角，同时指向纸鹤 */
+/* 折角：纸片被风吹起的一角，落在纸条下缘正中，正好指向下面的纸鹤 */
 .fish-blessing::after{
-  content:"";position:absolute;bottom:-5px;left:22px;width:10px;height:10px;
+  content:"";position:absolute;bottom:-5px;left:50%;width:10px;height:10px;
+  margin-left:-5px;
   background:var(--paper);transform:rotate(45deg);
   box-shadow:3px 3px 5px rgba(58,59,51,.12);
 }
-/* 纸条落在纸鹤左侧时，折角改到右下角，指向纸鹤 */
-.fish-blessing[data-side=left]::after{left:auto;right:22px}
 .fish-unlock{
   position:absolute;left:50%;top:2px;margin:0;padding:10px 18px;
   width:max-content;max-width:94%;border-radius:3px 12px 3px 12px;transform:translateX(-50%);
@@ -973,14 +977,21 @@ footer p{margin:0;color:var(--ink-faint);font-size:9px;letter-spacing:.16em}
 }
 @keyframes glitter{0%,100%{opacity:.36}50%{opacity:.6}}
 @keyframes chime{0%{width:26px;height:26px;opacity:.95}100%{width:340px;height:340px;opacity:0}}
+/* 纸鹤飘行：范围收在场地内（-6vw ~ 94vw），不要飘到屏幕外面去。
+   原来一直飘到 112vw，纸鹤有一半时间是看不见的；
+   而且祝福纸条要正对被点的纸鹤，纸鹤跑到屏幕外时纸条再怎么夹也只能贴边，
+   看起来就跟点击的鹤没关系。现在两端最多只压住一点点，纸条始终能对上。 */
 @keyframes glide{
-  0%{transform:translateX(-46px) translateY(0) rotate(-4deg)}
-  25%{transform:translateX(26vw) translateY(-18px) rotate(3deg)}
-  50%{transform:translateX(52vw) translateY(12px) rotate(-3deg)}
-  75%{transform:translateX(78vw) translateY(-14px) rotate(4deg)}
-  100%{transform:translateX(112vw) translateY(6px) rotate(-4deg)}
+  0%{transform:translateX(-6vw) translateY(0) rotate(-4deg)}
+  25%{transform:translateX(19vw) translateY(-14px) rotate(3deg)}
+  50%{transform:translateX(44vw) translateY(10px) rotate(-3deg)}
+  75%{transform:translateX(69vw) translateY(-12px) rotate(4deg)}
+  100%{transform:translateX(94vw) translateY(5px) rotate(-4deg)}
 }
-@keyframes caught{0%{opacity:1;transform:scale(1) rotate(0)}100%{opacity:0;transform:scale(1.9) rotate(18deg)}}
+/* 被接住：淡出并稍微放大后飘走。
+   放大幅度刻意压到 1.35 —— .caught 会顶掉 glide 的 transform，元素在动画起点会
+   短暂回到布局位置；放得越大，那一跳越明显。 */
+@keyframes caught{0%{opacity:1;transform:scale(1) rotate(0)}100%{opacity:0;transform:scale(1.35) rotate(12deg)}}
 @keyframes blessing-pop{
   0%{opacity:0;transform:translateY(14px) scale(.86) rotate(-1.6deg)}
   14%,74%{opacity:1;transform:translateY(0) scale(1) rotate(-1.6deg)}
@@ -1038,11 +1049,24 @@ footer p{margin:0;color:var(--ink-faint);font-size:9px;letter-spacing:.16em}
 #briefing .accept-button{margin-top:21px;padding:19px;font-size:13.5px}
 
 /* 风与纸鹤：这一屏只有「风铃图 + 提示 + 纸鹤场 + 提示」四块。
-   图放宽到出血（抵消内容区的 22px 内边距），并放大到 16:11 填满上半屏。 */
-.chime-section .exploration-frame{margin:0 -22px}
+   图放宽到出血（抵消内容区的 22px 内边距），并放大到 16:11 填满上半屏。
+   注意：出血必须写成 width:calc(100% + 44px)。
+   只写左右负 margin 是不够的 —— `.story-section>*` 已经把宽度定成 100%(346px)，
+   负 margin 不会把盒子撑开，只会把它整体左移 22px
+   （实测 frame 中心 173、section 中心 195，偏了整整 22px，就是手机上看到的"图靠左"）。 */
+.chime-section .exploration-frame{width:calc(100% + 44px);margin:0 -22px}
 .chime-section .exploration-frame>img{aspect-ratio:16/11;object-position:center 56%}
 .chime-section .scene-caption{margin-top:22px}
-.chime-section .scene-caption+.fish-field{height:212px;margin-top:22px}
+/* 纸鹤场的高度按**实际可用空间**算，不能用固定值。
+   原来写死 212px，在 680px 高的手机上纸鹤场底部会伸到固定底栏下面 ——
+   最下面那排纸鹤被底栏盖住，纸条也跟着被压住（实测字段底部 704，底栏顶 631）。
+   这里先减去：内容区上下内边距(104/22) + 图(16:11) + 两条提示 + 它们的外边距，
+   再减去底部快捷导航的实际高度与安全距离，剩下的才给纸鹤场。
+   纸鹤的竖向散布由 app.js 的 layoutCranes() 按实测高度铺开。 */
+.chime-section .scene-caption+.fish-field{
+  height:clamp(140px,calc(100svh - 682px),260px);
+  margin-top:22px;
+}
 
 /* 风车邮局：放大相框与文字内边距 */
 .crew-section .crew-phone{padding:18px}

@@ -134,33 +134,65 @@ const craneBlessings = [
   '愿平淡日子里的面包和牛奶都香甜'
 ]
 let caught = 0
-function showCraneBlessing(crane) {
+// `at` 是点击那一刻纸鹤的真实位置。
+// 必须由调用方在加 .caught 之前量好传进来：.caught 动画会顶掉 glide 的 transform，
+// 那一瞬间纸鹤会跳回布局位置，之后再量就量到"跳回去的位置"，
+// 纸条就会飘到离被点纸鹤很远的地方 —— 这正是之前手机上看到的问题。
+function showCraneBlessing(crane, at) {
   // 原来这里有一句 `if (Math.random() > 0.72) return`：
   // 想着偶尔不出纸条更自然，实际效果是 "点了好几次都没有祝福" —— 交互反馈不能有随机缺失，已删除。
-  const blessing = document.createElement('p')
-  const craneRect = crane.getBoundingClientRect()
+  const craneRect = at || crane.getBoundingClientRect()
   const fieldRect = fishField.getBoundingClientRect()
+  const blessing = document.createElement('p')
   blessing.className = 'fish-blessing'
   blessing.textContent = craneBlessings[Math.floor(Math.random() * craneBlessings.length)]
-  // 纸条按 180px 估算排在纸鹤左侧；贴到左边缘时改排右侧，折角也跟着换边
-  const craneLeft = craneRect.left - fieldRect.left
-  const craneTop = craneRect.top - fieldRect.top
-  const side = craneLeft < 196 ? 'right' : 'left'
-  blessing.dataset.side = side
-  blessing.style.left = `${side === 'right'
-    ? Math.min(fieldRect.width - 184, craneLeft + craneRect.width * 0.5)
-    : Math.max(6, craneLeft - 148)}px`
-  // 连着接住好几只时纸条会叠在一起，按当前存活数量往下错开；最多错两级，免得跑出纸鹤场
-  const alive = fishField.querySelectorAll('.fish-blessing').length
-  blessing.style.top = `${Math.max(4, craneTop - 46 + Math.min(2, alive) * 52)}px`
+  // 先放进去，才能量到纸条的真实尺寸（宽度由 CSS 固定，高度随文字行数变）
   fishField.appendChild(blessing)
+  const noteRect = blessing.getBoundingClientRect()
+
+  // 纸条要**正对被点的那只纸鹤**：横向以纸鹤中心居中。
+  // 原来是"排左或排右"的写法，纸条会跑到纸鹤的斜侧方，看起来跟点击的鹤没关系。
+  // 只在视口两侧留 10px 安全边，其余情况一律正中。
+  const craneCenterInPage = craneRect.left + craneRect.width / 2
+  const leftInPage = Math.min(
+    Math.max(craneCenterInPage - noteRect.width / 2, 10),
+    window.innerWidth - noteRect.width - 10
+  )
+  blessing.style.left = `${leftInPage - fieldRect.left}px`
+
+  // 默认飘在纸鹤上方；上方放不下就翻到下方
+  const above = craneRect.top - fieldRect.top - noteRect.height - 10
+  const below = craneRect.bottom - fieldRect.top + 10
+  const maxTop = fieldRect.height - noteRect.height - 6
+  const preferred = above >= 4 ? above : below
+  blessing.style.top = `${Math.min(Math.max(preferred, 4), Math.max(4, maxTop))}px`
+
+  // 放大回弹，让"这张纸条是从这只鹤出来的"更明确
+  blessing.animate(
+    [{ transform: 'rotate(-1.6deg) scale(.7)' }, { transform: 'rotate(-1.6deg) scale(1)' }],
+    { duration: 260, easing: 'cubic-bezier(.2,1.5,.5,1)' }
+  )
   window.setTimeout(() => blessing.remove(), 2600)
+}
+// 纸鹤的竖向分布随场地高度重算：视口变化（手机地址栏收起/展开、转屏）时要重新铺一次。
+// 注意不要用 getComputedStyle 读自定义属性来拿范围 —— 自定义属性返回的是**未求值的原文**
+// （例如 "max(10px,calc(100% - 52px))"），parseFloat 会得到 NaN。直接量场地高度最可靠。
+// 用等距分布而不是取模：取模在小场地里会把几只纸鹤挤成一团（实测 140px 高时出现 11px 的间隔）。
+// 横向位置由 glide 动画各自错开，竖向等距反而更均匀。
+function layoutCranes() {
+  if (!fishField) return
+  const cranes = [...fishField.querySelectorAll('.pixel-fish')]
+  if (!cranes.length) return
+  const range = Math.max(10, fishField.getBoundingClientRect().height - 56)
+  const step = cranes.length > 1 ? range / (cranes.length - 1) : 0
+  cranes.forEach((crane, index) => {
+    crane.style.top = `${8 + step * index}px`
+  })
 }
 for (let index = 0; index < 9; index += 1) {
   const crane = document.createElement('button')
   crane.type = 'button'; crane.className = 'pixel-fish'; crane.setAttribute('aria-label', `接住第 ${index + 1} 只纸鹤`)
   crane.dataset.tone = craneTones[index % craneTones.length]
-  crane.style.top = `${8 + (index * 53) % 170}px`
   crane.style.setProperty('--swim', `${13 + (index % 4) * 2}s`)
   crane.style.setProperty('--delay', `${-(index * 2.6)}s`)
   // 尺寸仍用内联样式：纸鹤按只大小不一，看起来才像被风吹散的一群
@@ -169,10 +201,14 @@ for (let index = 0; index < 9; index += 1) {
   crane.style.padding = '0'
   crane.addEventListener('click', () => {
     if (crane.classList.contains('caught')) return
+    // 先把纸鹤此刻的真实位置量下来，再改样式。
+    // 一旦加上 .caught，glide 的 transform 会被动画顶掉，元素会跳回布局位置，
+    // 那时候再量就晚了，纸条会飘到别处。
+    const at = crane.getBoundingClientRect()
     crane.classList.add('caught')
     // 接住时朝左上飞走，与纸鹤本身的朝向一致
     crane.style.transformOrigin = '50% 50%'
-    caught = Math.min(5, caught + 1); fishCount.textContent = String(caught); navigator.vibrate?.(25); showCraneBlessing(crane)
+    caught = Math.min(5, caught + 1); fishCount.textContent = String(caught); navigator.vibrate?.(25); showCraneBlessing(crane, at)
     if (caught === 5) {
       // 收齐的那一刻只留一句话：先把零散纸条收掉，免得叠在一起看不清
       fishField.querySelectorAll('.fish-blessing').forEach((node) => node.remove())
@@ -185,6 +221,10 @@ for (let index = 0; index < 9; index += 1) {
   })
   fishField.append(crane)
 }
+layoutCranes()
+// 手机地址栏收起/展开、转屏都会改变场地高度，重算一次散布范围
+window.addEventListener('resize', layoutCranes, { passive: true })
+window.addEventListener('orientationchange', layoutCranes, { passive: true })
 
 // 风车邮局来信：照片轮播
 const crewSlides = [...document.querySelectorAll('.crew-slide')]
