@@ -187,7 +187,6 @@ const main = async () => {
           heroNameImg: document.querySelector('.hero-names')?.getAttribute('alt') || null,
           heroArt: document.querySelector('.hero-art')?.getAttribute('src'),
           kicker: document.querySelector('.hero-kicker')?.textContent.trim(),
-          days: document.querySelector('#days-count').textContent,
           crewCount: document.querySelectorAll('.crew-slide').length,
           sectionNums: [...document.querySelectorAll('.section-title > span')].map(s=>s.textContent).join(',')
         })`

@@ -589,15 +589,6 @@ body::before{
 }
 .menu-total b{color:var(--sunset-deep);font-family:var(--serif);font-size:15px;letter-spacing:.06em}
 
-.countdown-card{
-  position:relative;z-index:2;display:flex;align-items:baseline;justify-content:center;gap:10px;
-  margin:28px 14px 0;padding:16px;border-radius:14px;
-  border:1px solid rgba(58,59,51,.18);
-  color:var(--ink-soft);background:rgba(255,251,242,.82);
-  box-shadow:var(--shadow-soft);font-size:9px;font-weight:700;letter-spacing:.18em;
-}
-.countdown-card b{color:var(--sunset-deep);font-family:var(--serif);font-size:31px;font-weight:900;letter-spacing:0}
-
 /* 地图卡片里的场地照片 */
 .hotel-shot{
   position:relative;z-index:2;margin:0 22px 18px;overflow:hidden;
@@ -1110,11 +1101,12 @@ footer p{margin:0;color:var(--ink-faint);font-size:9px;letter-spacing:.16em}
 .crew-section .crew-slide p{padding:0 2px}
 .crew-section .crew-controls{padding:0}
 
-/* 旅人手账：加高场景图；20:00 After Party 加进来后行程单多一行，
-   这两处间距从 24px 收到 18px 补回 12px，剩下的交给场景图自己收。 */
-.schedule-section .restaurant-screen img{aspect-ratio:3/2;max-height:clamp(146px,calc(100svh - 698px),400px)}
-.schedule-section .menu-board{margin-top:18px;padding:20px 22px 12px}
-.schedule-section .countdown-card{margin-top:18px;padding:16px 16px}
+/* 旅人手账：场景图加高，行程单与倒计时拉开。
+   倒计时卡（距启程 N 天）已删除 —— 20:00 After Party 加进来后行程单变三行，
+   那一屏要 914px、超出 70px；拿掉倒计时卡腾出约 102px，比需要的还多，
+   所以场景图恢复完整 3/2、两处间距也回到 24px。 */
+.schedule-section .restaurant-screen img{aspect-ratio:3/2}
+.schedule-section .menu-board{margin-top:24px;padding:20px 22px 12px}
 
 /* 往那盏灯的路：加高地图控制台与场地照间距 */
 .arrival .map-console{min-height:492px}

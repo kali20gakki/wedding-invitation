@@ -7,10 +7,8 @@
      #depth-value   → 风的刻度  #oxygen-fill → 云的高度
    ============================================================================ */
 
-const weddingDate = new Date('2026-10-02T11:30:00+08:00')
 // 真实宾客登记：飞书问卷公开填写链接。留空则退回本地演示模式（仅存本机、不上传）。
 const RSVP_FORM_URL = 'https://my.feishu.cn/share/base/form/shrcnFtcbV94GWMm1y3Zh7da99b'
-document.querySelector('#days-count').textContent = String(Math.max(0, Math.ceil((weddingDate.getTime() - Date.now()) / 86400000)))
 
 const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
 const revealElements = document.querySelectorAll('.reveal')
