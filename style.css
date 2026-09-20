@@ -511,9 +511,6 @@ body::before{
 .crew-slide p{
   margin:0;color:var(--ink-soft);font-size:11.5px;line-height:1.9;letter-spacing:.02em;
 }
-/* 引用的古句：排在正文之前，与白话正文区分开 */
-.crew-slide p i{display:block;margin:0 0 6px;color:var(--ink);font-style:normal;
-  font-family:var(--serif);font-size:12.5px;font-weight:900;letter-spacing:.14em}
 .crew-slide p{
   margin:0;padding:16px 18px 18px;color:var(--ink-soft);
   background:var(--linen);
