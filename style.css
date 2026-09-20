@@ -1112,8 +1112,17 @@ footer p{margin:0;color:var(--ink-faint);font-size:9px;letter-spacing:.16em}
 .arrival .map-console{min-height:492px}
 .arrival .hotel-shot{margin-bottom:26px}
 
-/* 在旅人名册上落款：放大白色登记卡 */
-.rsvp-section .rsvp-phone{padding:60px 22px;min-height:452px}
+/* 在旅人名册上落款：让这张卡撑满整屏。
+   原本靠 .rsvp-phone 的 60px 上下内边距把卡片撑高，白块只占卡片一半，
+   牛皮纸在上下各留一条约 60px 的空带：卡里"上面空了一块"，而且卡片比内容矮，
+   整屏上下又各留 113 / 153px 的空 —— 手机上滚到这一屏就是一片空白，接不上。
+   改成：内边距回到常规 16px；卡片 flex:1 接管标题以下的全部剩余高度；
+   白块再 flex:1 接管卡片内部。结果 390×844 上卡片 596px、白块 507px、
+   顶部留白回到和其它屏一致的 64px，整屏没有一处空白带。
+   注：[hidden] 在第 70 行有 display:none!important 兜底，:not([hidden]) 是双保险。 */
+.rsvp-section .rsvp-phone{padding:16px 22px;display:flex;flex-direction:column;flex:1 1 auto}
+.rsvp-section .rsvp-phone>#rsvp-external:not([hidden]),
+.rsvp-section .rsvp-phone>#rsvp-success:not([hidden]){flex:1;display:flex;flex-direction:column;justify-content:center}
 
 /* 带走一张：放大牌堆与按钮，让"抽一张"这一下有分量 */
 .draw-lead{margin-bottom:50px;font-size:13px}

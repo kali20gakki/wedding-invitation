@@ -81,6 +81,9 @@ class CDP {
 }
 
 // 逐屏滚进视口量一次，返回 { id: {ratio, height, label} }
+// topGap = section 顶到标题的距离；bottomGap = 末元素到 section 底的距离。
+// 两者都远大于上下内边距（64 / 104）就说明这一屏内容偏少、被 justify-content:center
+// 从中间撑开了 —— 视觉上就是「上面空一块、下面空一块」。
 const MEASURE = `(async()=>{
   const out = {};
   const sections = [...document.querySelectorAll('.story-section')];
@@ -90,10 +93,16 @@ const MEASURE = `(async()=>{
     await new Promise(r => setTimeout(r, 260));
     const h = s.getBoundingClientRect().height;
     const vh = window.innerHeight;
+    const sr = s.getBoundingClientRect();
+    const kids = [...s.children];
+    const last = kids[kids.length - 1].getBoundingClientRect();
+    const title = s.querySelector('.section-title');
     out[s.id || '(ending)'] = {
       ratio: Math.round(h / vh * 1000) / 1000,
       height: Math.round(h),
-      over: Math.round(h - vh)
+      over: Math.round(h - vh),
+      topGap: title ? Math.round(title.getBoundingClientRect().top - sr.top) : null,
+      bottomGap: Math.round(sr.bottom - last.bottom)
     };
   }
   window.scrollTo({ top: 0, behavior: 'instant' });
@@ -132,7 +141,8 @@ const main = async () => {
     for (const [id, m] of Object.entries(data.sections)) {
       worst = Math.max(worst, m.ratio)
       const flag = m.ratio > 1.001 ? `  ← 超出 ${m.over}px` : ''
-      console.log(`  ${id.padEnd(10)} ${String(m.ratio).padEnd(6)} ${m.height}px${flag}`)
+      const gaps = m.topGap === null ? '' : `  上留白 ${m.topGap}  下留白 ${m.bottomGap}`
+      console.log(`  ${id.padEnd(10)} ${String(m.ratio).padEnd(6)} ${String(m.height + 'px').padEnd(7)}${gaps}${flag}`)
     }
   }
   console.log(`\n最差屏数: ${worst}${worst > 1.001 ? '  (存在超屏)' : '  (全部 ≤ 1 屏)'}`)
