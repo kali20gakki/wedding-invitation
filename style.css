@@ -1110,13 +1110,11 @@ footer p{margin:0;color:var(--ink-faint);font-size:9px;letter-spacing:.16em}
 .crew-section .crew-slide p{padding:0 2px}
 .crew-section .crew-controls{padding:0}
 
-/* 旅人手账：场景图加高，行程单与倒计时拉开。
-   390×844 上这一屏原本 862px，比视口多 18px —— 倒计时卡下沿掉出折线。
-   除场景图外的部分固定约 632px，所以让图片按剩余空间收，和 03 章轮播同一套做法。
-   下限 190px 兜底：360×640 / 375×667 这类矮屏本来就装不下，不能把图压没。 */
-.schedule-section .restaurant-screen img{aspect-ratio:3/2;max-height:clamp(190px,calc(100svh - 636px),400px)}
-.schedule-section .menu-board{margin-top:24px;padding:20px 22px 12px}
-.schedule-section .countdown-card{margin-top:24px;padding:16px 16px}
+/* 旅人手账：加高场景图；20:00 After Party 加进来后行程单多一行，
+   这两处间距从 24px 收到 18px 补回 12px，剩下的交给场景图自己收。 */
+.schedule-section .restaurant-screen img{aspect-ratio:3/2;max-height:clamp(146px,calc(100svh - 698px),400px)}
+.schedule-section .menu-board{margin-top:18px;padding:20px 22px 12px}
+.schedule-section .countdown-card{margin-top:18px;padding:16px 16px}
 
 /* 往那盏灯的路：加高地图控制台与场地照间距 */
 .arrival .map-console{min-height:492px}
