@@ -477,7 +477,7 @@ body::before{
 
 /* ------------------------------------------------------------ 风车邮局来信 */
 .crew-section{
-  padding-bottom:68px;
+  padding-bottom:60px;
   background:linear-gradient(180deg,#E8DCC0 0,#D9C3A0 40%,#C9AF88 100%);
 }
 .crew-section .section-title>span{background:rgba(255,251,242,.86)}
@@ -486,6 +486,10 @@ body::before{
   border:1px solid rgba(58,59,51,.24);border-radius:18px;
   background:var(--paper);box-shadow:var(--shadow);
 }
+/* 本章除图片外的固定开销必须压小，否则矮屏上图片要缩到 170px 才放得下一屏。
+   三处一起收：内容区下内边距 60→36、标题下间距 44→24、图注上间距 10→6。 */
+.crew-section .section-title{margin-bottom:24px}
+.crew-section{padding-bottom:36px}
 .phone-top{
   display:flex;justify-content:space-between;align-items:center;
   padding:4px 6px 13px;margin-bottom:6px;
@@ -495,26 +499,27 @@ body::before{
 .phone-top b{color:var(--sunset-deep);font-weight:900;letter-spacing:.16em}
 
 .crew-slides{position:relative}
-.crew-slide{
-  display:none;margin:0;
-}
+.crew-slide{display:none;margin:0}
 .crew-slide.is-active{display:block;animation:fade-in .5s ease both}
-/* 婚纱照已换成原图（不再转风格），多为 2:3 竖版。
-   原来 4:3 横版会把竖版裁掉大半，所以画幅改为竖版，
-   高度用 clamp 控制，既保留半身构图又不会把这一章撑过一屏。
-   圆角与裁切放在图片上（原来挂在 .crew-slide 上，会把下面的图注一起裁掉）。 */
+/* 婚纱照已换成原图（不再转风格），多为 2:3 竖版，所以画幅用竖版。
+   "每章一屏"的规则对本章也生效，图片高度必须算准：
+   图片能用的高度 = 100svh − 420px（420 = 内容区上下内边距 + 标题 + 相框边框/内边距
+   + 顶部条 + 图注 + 翻页控件）。
+   下限 150px 兜住极矮屏，上限 400px 免得大屏过高。
+   注意：这里只能有一条 .crew-slide img 规则 —— 之前留了新旧两条，
+   后定义的那条会盖住先定义的，改半天不生效。 */
 .crew-slide img{
-  display:block;width:100%;height:clamp(300px,52svh,420px);
+  display:block;width:100%;height:clamp(150px,calc(100svh - 420px),400px);
   object-fit:cover;object-position:center 32%;
-  border-radius:12px;overflow:hidden;
+  border-radius:12px;
 }
+/* 图注：圆角与图片保持一致，颜色用卡片自身的纸色。
+   这里以前挂着一个方块状的 --linen 底色，压在圆角图片下面就是一块直角色块，
+   和图片的圆角明显割裂；改成同圆角 + 下方留白。 */
 .crew-slide p{
-  margin:0;color:var(--ink-soft);font-size:11.5px;line-height:1.9;letter-spacing:.02em;
-}
-.crew-slide p{
-  margin:0;padding:16px 18px 18px;color:var(--ink-soft);
-  background:var(--linen);
-  font-family:var(--serif);font-size:13px;font-weight:700;line-height:1.95;letter-spacing:.04em;
+  margin:6px 0 0;padding:0 4px;
+  color:var(--ink-soft);
+  font-family:var(--serif);font-size:12.5px;font-weight:700;line-height:1.95;letter-spacing:.04em;
 }
 
 .crew-controls{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:13px}
@@ -1087,10 +1092,13 @@ footer p{margin:0;color:var(--ink-faint);font-size:9px;letter-spacing:.16em}
   margin-top:22px;
 }
 
-/* 风车邮局：放大相框与文字内边距 */
-.crew-section .crew-phone{padding:18px}
-.crew-section .crew-slide p{padding:40px 4px 28px}
-.crew-section .crew-controls{padding:30px 4px 2px}
+/* 风车邮局：相框内边距沿用基准值，不再额外放大。
+   这里原先有一组 `padding:40px 4px 28px` / `padding:30px 4px 2px`，
+   是图注还很短、翻页控件还小的时候加的；换成长文案 + 大图之后，
+   这一组白白多占约 118px 竖向空间，导致矮屏上图片只能缩到 170px 才放得下一屏。 */
+.crew-section .crew-phone{padding:14px}
+.crew-section .crew-slide p{padding:0 2px}
+.crew-section .crew-controls{padding:0}
 
 /* 旅人手账：场景图加高，行程单与倒计时拉开 */
 .schedule-section .restaurant-screen img{aspect-ratio:3/2}
