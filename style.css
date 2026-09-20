@@ -184,10 +184,13 @@ body::before{
 
 /* 底部：按钮 + 提示。
    原来这里还有一张「日期 + 场地」的白卡片，和顶部状态条的日期、场地章节的
-   地址重复了三遍，已删除；按钮相应上移。 */
+   地址重复了三遍，已删除；按钮相应上移。
+   高度 112px 而不是 74px：右下角 .music-dock（46px 圆钮 + 58px 底距）占据视口
+   底部约 104px，74px 时按钮右下角和提示文案会压到音乐坞的「点击播放」气泡上
+   （实测 390×844 上重叠 52×14px）。留 8px 余量。 */
 .hero-actions{
   position:absolute;z-index:3;left:22px;right:22px;
-  bottom:calc(env(safe-area-inset-bottom) + 74px);
+  bottom:calc(env(safe-area-inset-bottom) + 112px);
   display:flex;flex-direction:column;align-items:center;
 }
 

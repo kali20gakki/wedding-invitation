@@ -127,6 +127,8 @@ node tools/shoot.mjs 8099
 | 11 | `app.js` 背景音乐 | 音频源 404 时 `hidden` 收起整个 `.music-dock`，不再弹「音乐暂未就位」 |
 | 12 | `app.js` `saveDrawnCard()` | 新增 `inWeChat` 分支：微信里不做无效下载，直接提示长按保存 |
 | 13 | `index.html` / `assets/og-share.jpg` | 分享缩略图补 JPG 版，`og:image` 指向 JPG，新增 `tools/build-og.py` |
+| 14 | `assets/wedding-bgm.mp3` | 新人提供的 bgm 上线；用 `tools/strip-id3-art.py` 去掉 798KB 内嵌封面图后入库 |
+| 15 | `index.html` / `style.css` | 音乐控件恢复显示后暴露的两处问题：文案「风与钢琴」→「风与吉他」；`.hero-actions` 底距 74→112px 避开音乐坞 |
 
 ### 为什么顺带动了 3~5
 
@@ -268,3 +270,48 @@ GitHub Pages 已开启，`https://kali20gakki.github.io/wedding-invitation/` 返
 逐字节比对线上与本地：`index.html` / `style.css` / `app.js` **三者完全一致**，
 说明线上就是要发出去的这一版。逐个探测 15 个资源，除
 `assets/wedding-bgm.mp3` 为 404（已知，本轮已让控件自动隐藏）外全部 200。
+
+### 追加：背景音乐上线（2026-09-20）
+
+新人提供的 `bgm.mp3` 放进仓库根目录（已加进 `.gitignore`，原文件 5.78MB 不入库）。
+
+**先查清它是什么**（无 ffmpeg / mutagen，手写解析）。新增 `tools/check-bgm.py`：
+
+| 项 | 结果 |
+| --- | --- |
+| 格式 | MPEG1 Layer III / 44100 Hz / 立体声 / 128 kbps / CBR |
+| 时长 | 328.8 秒 = 5 分 29 秒（12588 帧） |
+| ID3 | 艺术家「深蓝的吉他」· 标题「One More Time,One More Chance(秒速五厘米ED)」· 专辑「James的指弹二次元」 |
+
+**发现一个必须处理的技术问题：ID3 标签压在文件最前面，占了 799,332 字节（13%），
+其中 APIC（内嵌封面图）一项就是 798,209 字节。** 浏览器要先把标签下完才能开始解码，
+等于宾客点下播放得先拉 800KB 才出声，手机上会明显卡一下。
+新增 `tools/strip-id3-art.py` 只丢掉 APIC、保留 1KB 文字帧（保住署名）：
+
+| | 改前 | 改后 |
+| --- | --- | --- |
+| 文件体积 | 6,060,601 B（5.78 MB） | **5,262,291 B（5.02 MB）** |
+| 音频起始偏移 | 799,332 | **1,022** |
+| 帧数 / 时长 | 12588 / 328.8s | **12588 / 328.8s（完全一致）** |
+
+帧数与时长逐项相同，证明音频流一个字节没动，只是把封面图摘掉了。
+
+**音乐控件恢复显示后，又暴露两处连带问题**（此前 mp3 缺失、控件被隐藏，所以看不见）：
+
+1. **文案说错乐器。** `#music-hint` 与 `.start-note` 都写「风与钢琴」，而这首是**指弹吉他**。
+   两处都改掉；另外 `.start-note` 原本「建议开启声音 · 点击后播放风与钢琴」和旁边音乐坞气泡
+   「点击播放：风与吉他」说的是同一件事，压成「建议开启声音」，去掉重复。
+2. **首屏 CTA 压到音乐坞上。** `.hero-actions` 底距只有 74px，而 `.music-dock`
+   （46px 圆钮 + 58px 底距）占视口底部约 104px —— 实测 390×844 上按钮右下角与
+   音乐坞气泡重叠 **52×14px**。底距改为 112px（留 8px 余量）。
+   四个视口复测 `overlapDockVsActions` 全为 **false**。
+
+**版权提示（如实记录，不擅自处理）。** 这首是《秒速五厘米》ED
+「One More Time, One More Chance」（山崎将义）的第三方指弹翻奏，
+与设计文档 `PLAN-GHIBLI-WEDDING.zh-CN.md` §A7「禁止使用久石让、任何吉卜力作品原声」
+的约束不符（该条针对吉卜力，但这同样是商业版权曲 + 第三方翻奏录音）。
+站点是公开的 GitHub Pages。已按新人的要求上线，**但这条风险要新人自己判断**。
+
+校验：音频 `duration` 328.78、`readyState` 4、`error` 为 null；
+`decodeAudioData` 整段解码成功（328.8s / 2 声道）—— 确认是能播的完整 mp3；
+断言全过、`overflowX` 全 false。

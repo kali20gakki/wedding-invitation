@@ -15,3 +15,7 @@ generated-raw/
 
 # 新人提供的抽卡原图（成品卡 WebP 已转好放在 assets/cards/，原始 PNG 不入库）
 抽卡图片/
+
+# 背景音乐原始文件（去封面图的成品已放在 assets/wedding-bgm.mp3，原文件不入库）
+# 重新生成: python tools/strip-id3-art.py bgm.mp3 assets/wedding-bgm.mp3
+/bgm.mp3
