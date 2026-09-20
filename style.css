@@ -247,7 +247,11 @@ body::before{
      用 auto 关键字保留内在尺寸，避免滚动条长度跳动。
      注：content-visibility 之外的浏览器会忽略这条，不影响其它样式。 */
   content-visibility:auto;
-  contain-intrinsic-size:auto 100svh;
+  /* contain-intrinsic-size 量的是「内容盒」，不含上下 64/104 的内边距。
+     写 100svh 会让屏幕外章节占位 100svh+168px，首屏文档高度凭空多出 12%，
+     滚动条长度随着章节渲染逐屏缩短 —— 也就是滚动条会「跳」。
+     写成 100svh-168px 才和真实高度对得上（168 = 64 + 104）。 */
+  contain-intrinsic-size:auto calc(100svh - 168px);
 }
 /* 内容一律从左边起排，避免 flex 居中把块级子元素缩成内容宽度 */
 .story-section>*{width:100%;flex:0 0 auto}
@@ -646,12 +650,18 @@ body::before{
 .map-pulse i{position:absolute;inset:0;border:1.5px solid var(--brick);border-radius:50%;animation:mapPulse 2.6s ease-out infinite}
 .map-pulse b{color:var(--brick);font-size:16px;line-height:1}
 
+/* 地图上的文字压在底图 + 牛皮纸渐隐层上。实测底色亮度 0.59~0.61，
+   而 --ink-soft 亮度 0.142 —— 对比只有 3.5:1，11px 小字要求 4.5:1，不达标；
+   连纯牛皮纸（亮度 0.566）也只到 3.2:1，所以靠加厚渐隐层救不回来，只能把字压深。
+   正文含"11:30 午宴，14:30 草坪婚礼"，是宾客要读的关键信息，改用 --ink（7.0:1）。
+   上面那行 MEETING POINT 只是装饰性标签（信息由下面的酒店名重复给出），
+   提到 --ink-soft（3.2:1），保住轻一点的分量。 */
 .coordinate{
   position:relative;z-index:2;display:block;margin:16px 22px 0;
-  color:var(--ink-faint);font-size:9px;font-weight:700;letter-spacing:.2em;
+  color:var(--ink-soft);font-size:9px;font-weight:700;letter-spacing:.2em;
 }
 .map-console h3{position:relative;z-index:2;margin:9px 22px 10px;color:var(--ink);font-family:var(--serif);font-size:16px;font-weight:900;line-height:1.55}
-.map-console>p:not(.coordinate){position:relative;z-index:2;margin:0 22px 18px;color:var(--ink-soft);font-size:11px;line-height:1.75}
+.map-console>p:not(.coordinate){position:relative;z-index:2;margin:0 22px 18px;color:var(--ink);font-size:11px;line-height:1.75}
 .map-console a{
   position:relative;z-index:2;display:flex;justify-content:center;align-items:center;gap:9px;
   margin:0 22px;padding:14px;border-radius:999px;
@@ -1100,8 +1110,11 @@ footer p{margin:0;color:var(--ink-faint);font-size:9px;letter-spacing:.16em}
 .crew-section .crew-slide p{padding:0 2px}
 .crew-section .crew-controls{padding:0}
 
-/* 旅人手账：场景图加高，行程单与倒计时拉开 */
-.schedule-section .restaurant-screen img{aspect-ratio:3/2}
+/* 旅人手账：场景图加高，行程单与倒计时拉开。
+   390×844 上这一屏原本 862px，比视口多 18px —— 倒计时卡下沿掉出折线。
+   除场景图外的部分固定约 632px，所以让图片按剩余空间收，和 03 章轮播同一套做法。
+   下限 190px 兜底：360×640 / 375×667 这类矮屏本来就装不下，不能把图压没。 */
+.schedule-section .restaurant-screen img{aspect-ratio:3/2;max-height:clamp(190px,calc(100svh - 636px),400px)}
 .schedule-section .menu-board{margin-top:24px;padding:20px 22px 12px}
 .schedule-section .countdown-card{margin-top:24px;padding:16px 16px}
 
