@@ -124,6 +124,9 @@ node tools/shoot.mjs 8099
 | 8 | 04 章 | **删掉倒计时卡**（`距启程还有 N 天`）及其样式与脚本 |
 | 9 | `style.css` `.schedule-section` | 场景图恢复完整 `aspect-ratio:3/2`，两处间距保持 24px |
 | 10 | `style.css` `.rsvp-section .rsvp-phone` | 去掉 `padding:60px 22px` 与 `min-height:452px`，改 `padding:16px 22px` + `flex:1 1 auto`；白块 `#rsvp-external` / `#rsvp-success` 加 `flex:1` 撑满卡片 |
+| 11 | `app.js` 背景音乐 | 音频源 404 时 `hidden` 收起整个 `.music-dock`，不再弹「音乐暂未就位」 |
+| 12 | `app.js` `saveDrawnCard()` | 新增 `inWeChat` 分支：微信里不做无效下载，直接提示长按保存 |
+| 13 | `index.html` / `assets/og-share.jpg` | 分享缩略图补 JPG 版，`og:image` 指向 JPG，新增 `tools/build-og.py` |
 
 ### 为什么顺带动了 3~5
 
@@ -227,3 +230,41 @@ node tools/shoot.mjs 8099
 
 校验：390×844 / 390×962 / 430×932 三档 rsvp 均 **1.000**，上留白 64 / 下留白 104；
 断言全过、`overflowX` 全 false；三个状态各截图 `read_image` 目视确认。
+
+### 追加：微信分享前的两项适配（2026-09-20）
+
+准备把链接发到微信时查出的两个「只在微信里坏」的问题：
+
+**一、音乐控件会当着宾客的面报错。** `assets/wedding-bgm.mp3` 一直是 404，
+而首屏按钮 `#start-mission` 一点就会 `playMusic()`，`<audio>` 抛 `error`
+（实测 code 4 / `networkState` 3）→ 弹出「音乐暂未就位，稍后再试」。
+**每位宾客点第一下就会看到这句。** 改为音频源坏掉时直接用 `hidden` 收起整个 `.music-dock`，
+不再展示失败提示；补上 mp3 后 error 不再触发，控件自动回来。
+仅当 `officialBgm.error` 非空才收起 —— 如果只是这次播放被浏览器策略挡下，保留按钮让用户再点。
+
+**二、微信里「保存到相册」点了没反应。** 微信内置浏览器不支持 Web Share API，
+也忽略 `a[download]`：`navigator.canShare` 走不通、备用下载又静默无反应，宾客会以为坏了。
+新增 `inWeChat`（UA 匹配 `MicroMessenger`）分支，在微信里直接给出可行做法 ——
+提示「长按上面的卡片图片，选保存图片」。实测两侧分支：
+
+| 环境 | 点「保存到相册」的结果 |
+| --- | --- |
+| 微信 UA | 提示「长按上面的卡片图片，选「保存图片」就能存进相册。」按钮保持可用 |
+| 普通浏览器 | 走原下载逻辑；失败时提示「图片没法直接保存，长按卡片图片也能存进相册。」 |
+
+微信分支用临时页 `_wechat-test.html` 验证（在 `<head>` 里用内联脚本抢先覆盖
+`navigator.userAgent` —— 模块脚本是 defer 的，一定晚于内联脚本执行），
+测完已删除，未进版本库。
+
+**三、分享缩略图补 JPG。** `og:image` 原本只有 `assets/og-share.webp`，
+微信 / QQ 的抓取器对 WebP 支持不稳，抓不到就只剩标题描述、卡片没图。
+新增 `tools/build-og.py` 从 WebP 转出 `assets/og-share.jpg`（1200×630，
+alpha 垫成纸色 `#F7F0E1` 避免黑边），`og:image` 指向 JPG、WebP 作为第二张备用，
+并补了 `og:image:type/width/height` 与老式的 `<link rel="image_src">`。
+
+### 线上部署核对（2026-09-20）
+
+GitHub Pages 已开启，`https://kali20gakki.github.io/wedding-invitation/` 返回 **HTTP 200**。
+逐字节比对线上与本地：`index.html` / `style.css` / `app.js` **三者完全一致**，
+说明线上就是要发出去的这一版。逐个探测 15 个资源，除
+`assets/wedding-bgm.mp3` 为 404（已知，本轮已让控件自动隐藏）外全部 200。

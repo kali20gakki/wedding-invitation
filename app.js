@@ -251,17 +251,25 @@ async function playMusic() {
     setMusicState(true)
   } catch {
     setMusicState(false)
-    musicHint.textContent = '音乐暂未就位，稍后再试'
-    musicHint.classList.remove('is-hidden')
+    // 只有「源坏了」才收起控件；仅仅是这次播放被浏览器挡下的话，保留按钮让用户再点
+    if (officialBgm.error) hideMusicDock()
+    else {
+      musicHint.textContent = '音乐暂未就位，稍后再试'
+      musicHint.classList.remove('is-hidden')
+    }
   }
 }
 function pauseMusic() { officialBgm.pause(); setMusicState(false) }
 musicToggle.addEventListener('click', () => musicPlaying ? pauseMusic() : playMusic())
-officialBgm.addEventListener('error', () => {
-  if (musicPlaying) return
-  musicHint.textContent = '音乐暂未就位，稍后再试'
-  musicHint.classList.remove('is-hidden')
-})
+// 音乐文件缺失时不要把「暂未就位」摆给宾客看 —— 直接收起整个音乐控件。
+// 音频 404 会触发 error，而首屏按钮 #start-mission 一点就会去 playMusic()，
+// 也就是说每位宾客点第一下就会看到那句失败提示。源坏掉就永久收起；
+// 等 assets/wedding-bgm.mp3 补上，这个监听不再触发，控件自动回来。
+function hideMusicDock() {
+  const dock = document.querySelector('.music-dock')
+  if (dock) dock.hidden = true
+}
+officialBgm.addEventListener('error', hideMusicDock)
 document.querySelector('#start-mission').addEventListener('click', () => { playMusic(); document.querySelector('#briefing').scrollIntoView({ behavior: reducedMotion ? 'auto' : 'smooth' }) })
 
 // 登记：外链模式（飞书问卷）优先，未配置时保留本地演示模式
@@ -444,9 +452,19 @@ function closeDraw() {
   lastFocus?.focus?.({ preventScroll: true })
 }
 
+// 微信内置浏览器既不支持 Web Share API，也会忽略 a[download]：
+// 点「保存到相册」只会静默无反应，宾客会以为坏了。
+// 所以微信里直接跳过下载，给出真正可行的做法 —— 长按卡片图片保存。
+const inWeChat = /MicroMessenger/i.test(navigator.userAgent)
+
 async function saveDrawnCard() {
   if (!drawnCard) return
   const source = drawnCard.card || drawnCard.image
+  if (inWeChat) {
+    drawNote.textContent = '长按上面的卡片图片，选「保存图片」就能存进相册。'
+    drawNote.hidden = false
+    return
+  }
   drawSave.disabled = true
   drawSave.textContent = '正在准备图片……'
   try {
