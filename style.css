@@ -496,10 +496,24 @@ body::before{
 
 .crew-slides{position:relative}
 .crew-slide{
-  display:none;margin:0;overflow:hidden;border-radius:12px;
+  display:none;margin:0;
 }
 .crew-slide.is-active{display:block;animation:fade-in .5s ease both}
-.crew-slide img{width:100%;aspect-ratio:4/3;object-fit:cover;object-position:center 30%}
+/* 婚纱照已换成原图（不再转风格），多为 2:3 竖版。
+   原来 4:3 横版会把竖版裁掉大半，所以画幅改为竖版，
+   高度用 clamp 控制，既保留半身构图又不会把这一章撑过一屏。
+   圆角与裁切放在图片上（原来挂在 .crew-slide 上，会把下面的图注一起裁掉）。 */
+.crew-slide img{
+  display:block;width:100%;height:clamp(300px,52svh,420px);
+  object-fit:cover;object-position:center 32%;
+  border-radius:12px;overflow:hidden;
+}
+.crew-slide p{
+  margin:0;color:var(--ink-soft);font-size:11.5px;line-height:1.9;letter-spacing:.02em;
+}
+/* 引用的古句：排在正文之前，与白话正文区分开 */
+.crew-slide p i{display:block;margin:0 0 6px;color:var(--ink);font-style:normal;
+  font-family:var(--serif);font-size:12.5px;font-weight:900;letter-spacing:.14em}
 .crew-slide p{
   margin:0;padding:16px 18px 18px;color:var(--ink-soft);
   background:var(--linen);

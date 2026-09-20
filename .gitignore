@@ -4,7 +4,9 @@
 node_modules/
 
 # 原始婚纱照、风格参考图与 AI 生成中间产物（不得入库）
+# 婚礼照片/ 是新人给的原图（10 张、约 170MB），web 用的成品已转好放在 assets/，原图不入库
 raw-photos/
+婚礼照片/
 generated-raw/
 起风了.jpg
 起风了人物.webp
